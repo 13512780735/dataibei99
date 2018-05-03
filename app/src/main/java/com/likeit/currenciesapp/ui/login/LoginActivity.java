@@ -294,6 +294,7 @@ public class LoginActivity extends BaseActivity {
 
                         mLoginUserInfoEntity = JSON.parseObject(object.optString("user"), LoginUserInfoEntity.class);
                         UtilPreference.saveString(mContext, "rongcloud_id", mLoginUserInfoEntity.getRongcloud_id());
+                        UtilPreference.saveString(mContext, "work", mLoginUserInfoEntity.getWork());
                         request(LOGIN, true);
                     } else {
                         LoadDialog.dismiss(mContext);

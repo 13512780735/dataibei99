@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.bumptech.glide.Glide;
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.model.GreenteahyInfoEntity;
@@ -59,7 +60,7 @@ public class PostScriptActivity extends BaseActivity implements View.OnClickList
         ButterKnife.bind(this);
         ukey = UtilPreference.getStringValue(this, "ukey");
         mUserId = getIntent().getStringExtra("userId");
-       initData();
+        initData();
         initView();
 
     }
@@ -93,9 +94,9 @@ public class PostScriptActivity extends BaseActivity implements View.OnClickList
                     if ("true".equals(status)) {
                         truename = obj.optJSONObject("info").optString("truename");
                         avatar = obj.optJSONObject("info").optString("pic");
-                        Log.d("TAG",truename+avatar);
+                        Log.d("TAG", truename + avatar);
                         tv_name.setText(truename);
-                        ImageLoader.getInstance().displayImage(AppConfig.LIKEIT_LOGO1 + avatar, iv_image);
+                        Glide.with(PostScriptActivity.this).load(AppConfig.LIKEIT_LOGO1 + avatar).centerCrop().into(iv_image);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

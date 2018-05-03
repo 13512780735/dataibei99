@@ -38,6 +38,7 @@
                 android:background="@color/white"
                 android:drawableRight="@mipmap/icon_right"
                 android:padding="20dp"
+                android:textSize="16sp"
                 android:text="請選擇提領帳號" />
 
             <LinearLayout
