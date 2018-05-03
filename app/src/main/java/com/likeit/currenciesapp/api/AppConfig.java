@@ -35,6 +35,8 @@ public class AppConfig {
     public static final String LIKEIT_GET_KEFU = IMAGE_URL_HOST + "?m=user&a=kefu";
     //找回密码
     public static final String LIKEIT_GET_PWd = IMAGE_URL_HOST + "?m=login&a=get_pwd";
+    //用户名获取用户信息
+    public static final String LIKEIT_GET_USERINFO = IMAGE_URL_HOST + "?m=user&a=get_userinfo";
 
     /**
      * 首页

@@ -1,19 +1,34 @@
 package com.likeit.currenciesapp.ui.chat.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.likeit.currenciesapp.R;
+import com.likeit.currenciesapp.api.AppConfig;
+import com.likeit.currenciesapp.model.GreenteahyInfoEntity;
 import com.likeit.currenciesapp.ui.chat.server.network.http.HttpException;
 import com.likeit.currenciesapp.ui.chat.server.response.FriendInvitationResponse;
 import com.likeit.currenciesapp.ui.chat.server.utils.NToast;
 import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.chat.ui.activity.BaseActivity;
+import com.likeit.currenciesapp.utils.HttpUtil;
+import com.likeit.currenciesapp.utils.UtilPreference;
+import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Retrofit;
 
 public class PostScriptActivity extends BaseActivity implements View.OnClickListener {
 
@@ -28,20 +43,76 @@ public class PostScriptActivity extends BaseActivity implements View.OnClickList
     EditText mEtMsg;
     @BindView(R.id.ibClear)
     ImageButton mIbClear;
+    @BindView(R.id.iv_image)
+    ImageView iv_image;
+    @BindView(R.id.tv_name)
+    TextView tv_name;
     private String msg;
+    private String ukey;
+    private String ivAvatarUrl;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_script);
         ButterKnife.bind(this);
+        ukey = UtilPreference.getStringValue(this, "ukey");
+        mUserId = getIntent().getStringExtra("userId");
+       initData();
+        initView();
+
+    }
+
+    private void initView() {
         setTitle("轉轉寳");
         mHeadRightText.setVisibility(View.VISIBLE);
         mHeadRightText.setText("發送");
         mHeadRightText.setOnClickListener(this);
-        mUserId = getIntent().getStringExtra("userId");
         mIbClear.setOnClickListener(v -> mEtMsg.setText(""));
-        // initView();
+
+    }
+
+    public String truename, avatar;
+
+    private void initData() {
+        String url = AppConfig.LIKEIT_GET_RONGCLOUDID;
+        RequestParams params = new RequestParams();
+        params.put("ukey", ukey);
+        params.put("rongcloud_id", mUserId);
+        HttpUtil.post(url, params, new HttpUtil.RequestListener() {
+
+
+            @Override
+            public void success(String response) {
+                Log.d("TAG111", response);
+                Log.d("TAG", response);
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    String status = obj.optString("status");
+                    if ("true".equals(status)) {
+                        truename = obj.optJSONObject("info").optString("truename");
+                        avatar = obj.optJSONObject("info").optString("pic");
+                        Log.d("TAG",truename+avatar);
+                        tv_name.setText(truename);
+                        ImageLoader.getInstance().displayImage(AppConfig.LIKEIT_LOGO1 + avatar, iv_image);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void failed(Throwable e) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+
+            }
+        });
     }
 
  /*   private void initView() {

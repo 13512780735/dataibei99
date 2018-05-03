@@ -115,7 +115,8 @@ public class ScanActivity extends Container implements QRCodeView.Delegate {
     private void handleResult(String result) {
        // showToast("扫描结果:" + result);
         Log.d("TAG","扫描结果:" + result);
-        String account = result.substring(AppConst.QrCodeCommon.ADD.length());
+        //String account = result.substring(AppConst.QrCodeCommon.ADD.length());
+        String account = result;
         Log.d("TAG","扫描结果account:" + account);
         vibrate();
         mZxingview.startSpot();

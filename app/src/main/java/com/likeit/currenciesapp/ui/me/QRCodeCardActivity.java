@@ -47,7 +47,7 @@ public class QRCodeCardActivity extends Container {
         Bundle bundle = getIntent().getExtras();
         mLoginUserInfoEntity = (LoginUserInfoEntity) bundle.getSerializable("userInfo");
         imageUris=bundle.getString("imageUris");
-        Log.d("TAG213", mLoginUserInfoEntity.getPic() + mLoginUserInfoEntity.getTruename() + mLoginUserInfoEntity.getUser_name());
+        Log.d("TAG213", mLoginUserInfoEntity.getPic() + mLoginUserInfoEntity.getTruename() + mLoginUserInfoEntity.getRongcloud_id());
         initData();
         initView();
     }
@@ -55,8 +55,8 @@ public class QRCodeCardActivity extends Container {
     private void initData() {
         Glide.with(this).load(imageUris).centerCrop().into(mIvHeader);
         mTvName.setText(mLoginUserInfoEntity.getTruename());
-        setQRCode(AppConst.QrCodeCommon.ADD + mLoginUserInfoEntity.getUser_name());
-    }
+        setQRCode( mLoginUserInfoEntity.getRongcloud_id());
+}
 
     private void setQRCode(String content) {
         Observable.just(QRCodeEncoder.syncEncodeQRCode(content, UIUtils.dip2Px(100)))

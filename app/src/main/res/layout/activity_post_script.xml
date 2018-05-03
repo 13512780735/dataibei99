@@ -7,6 +7,27 @@
     tools:context="com.likeit.currenciesapp.ui.chat.ui.PostScriptActivity">
 
     <!--<include layout="@layout/layout_header_with_back"></include>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@mipmap/default_user_head" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_image"
+            android:padding="10dp"
+            android:textSize="16sp"
+           />
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
