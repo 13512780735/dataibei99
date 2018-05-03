@@ -614,6 +614,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
         ininWithdraw();
         initUserInfo();
+        initIncome();
+        initExpend();
         mPullToRefreshScrollView.onRefreshComplete();
     }
 

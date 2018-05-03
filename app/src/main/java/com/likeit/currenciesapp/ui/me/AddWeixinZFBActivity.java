@@ -130,11 +130,14 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
             if ("3".equals(type)) {
                 tv_name.setText("支付寶");
                 tvHeader.setText("添加支付寶賬號");
+                apply_et_account.setText("請輸入您的支付寶帳號");
+                apply_et_name.setText("請輸入您的姓名");
 
             } else if ("4".equals(type)) {
                 tv_name.setText("微信");
                 tvHeader.setText("添加微信賬號");
-
+                apply_et_account.setText("請輸入您的微信帳號");
+                apply_et_name.setText("請輸入您的姓名");
             }
         } else if ("2".equals(keys)) {
             tv_apply.setText("修改");

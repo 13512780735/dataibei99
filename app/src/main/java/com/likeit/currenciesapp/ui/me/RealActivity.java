@@ -328,7 +328,7 @@ public class RealActivity extends Container {
             if (hasSdcard()) {
                 imageUri = Uri.fromFile(fileUri);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                    imageUri = FileProvider.getUriForFile(mContext, "com.likeit.as51scholarship.fileprovider", fileUri);//通过FileProvider创建一个content类型的Uri
+                    imageUri = FileProvider.getUriForFile(mContext, "com.likeit.currenciesapp.fileprovider", fileUri);//通过FileProvider创建一个content类型的Uri
                 PhotoUtils.takePicture(this, imageUri, CODE_CAMERA_REQUEST);
             } else {
                 ToastUtils.showShort(this, "设备没有SD卡！");
@@ -389,7 +389,7 @@ public class RealActivity extends Container {
                         cropImageUri = Uri.fromFile(fileCropUri);
                         Uri newUri = Uri.parse(PhotoUtils.getPath(this, data.getData()));
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-                            newUri = FileProvider.getUriForFile(this, "com.likeit.as51scholarship.fileprovider", new File(newUri.getPath()));
+                            newUri = FileProvider.getUriForFile(this, "com.likeit.currenciesapp.fileprovider", new File(newUri.getPath()));
                         PhotoUtils.cropImageUri(this, newUri, cropImageUri, 1, 1, output_X, output_Y, CODE_RESULT_REQUEST);
                         Log.d("TAG123", newUri.getPath());
                     } else {

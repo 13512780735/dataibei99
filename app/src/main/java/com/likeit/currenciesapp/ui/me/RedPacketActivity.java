@@ -98,7 +98,6 @@ public class RedPacketActivity extends BaseActivity implements RadioGroup.OnChec
             @Override
             public void onRefresh() {
                 // Refresh items
-                page = 1;
                 refreshItems();
 
             }
@@ -107,7 +106,6 @@ public class RedPacketActivity extends BaseActivity implements RadioGroup.OnChec
         endLessOnScrollListener = new EndLessOnScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore() {
-                page++;
                 refreshItems();
             }
         };
@@ -120,8 +118,6 @@ public class RedPacketActivity extends BaseActivity implements RadioGroup.OnChec
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
         params.put("log_type", log_type);
-        params.put("page", page);
-        params.put("pgsize", 100);
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
@@ -135,15 +131,7 @@ public class RedPacketActivity extends BaseActivity implements RadioGroup.OnChec
                         //OrderInfoEntity mOrderInfoEntity = JSON.parseObject(String.valueOf(obj.optJSONArray("info")), OrderInfoEntity.class);
                         ArrayList<GreenteahyInfoEntity> orderData = (ArrayList<GreenteahyInfoEntity>) JSON.parseArray(obj.optString("info"), GreenteahyInfoEntity.class);
                         Log.d("TAG", orderData.toString());
-                        if (page == 1) {
                             mRedIncomeExpendAdapter.setDatas(orderData);
-                        } else {
-                            mRedIncomeExpendAdapter.addDatas(orderData);
-                        }
-                    } else {
-                        if (page == 1) {
-                            mRedIncomeExpendAdapter.cleanDatas();
-                        }
                         //
                     }
                 } catch (JSONException e) {
