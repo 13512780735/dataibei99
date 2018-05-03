@@ -38,6 +38,8 @@ import com.likeit.currenciesapp.model.UserInfo;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
 import com.likeit.currenciesapp.ui.chat.SealConst;
 import com.likeit.currenciesapp.ui.chat.server.broadcast.BroadcastManager;
+import com.likeit.currenciesapp.ui.chat.ui.KeFuListActivity;
+import com.likeit.currenciesapp.ui.chat.ui.KeFuSearchActivity;
 import com.likeit.currenciesapp.ui.login.LoginActivity;
 import com.likeit.currenciesapp.ui.me.BankcardActivity;
 import com.likeit.currenciesapp.ui.me.OrderListActivity;
@@ -95,6 +97,7 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
     private RelativeLayout tv_rlRCordCard;
     private LoginUserInfoEntity mLoginUserInfoEntity;
     private String imageUris;
+    private RelativeLayout rlService;
 
     @Override
     protected int setContentView() {
@@ -171,6 +174,7 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
     }
 
     private void initView() {
+
         tvHeader = findViewById(R.id.tv_header);
         tvHeader.setText(this.getResources().getString(R.string.me_name01));
         ivAvatar = findViewById(R.id.iv_avatar);//图像
@@ -181,6 +185,7 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
 
 
         rlSetting = findViewById(R.id.tv_rlSetting);
+        rlService = findViewById(R.id.tv_rlService);
         tvLogout = findViewById(R.id.tv_tvLogout);
         rlReal = findViewById(R.id.tv_rlReal_authentication);
         rlRedPacket = findViewById(R.id.tv_rlRed_packet);
@@ -200,6 +205,15 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
                 .setPullLabel("下拉刷新");
         mPullToRefreshScrollView.getLoadingLayoutProxy().setReleaseLabel(
                 "松开即可刷新");
+        if (mLoginUserInfoEntity.getIs_kefu() == 0) {
+            rlService.setVisibility(View.VISIBLE);
+            rlService.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toActivity(KeFuListActivity.class);
+                }
+            });
+        }
         initListener();
     }
 
@@ -249,7 +263,7 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
                 toActivity(OrderListActivity.class);
                 break;
             case R.id.tv_rlBankcard:
-               // UtilPreference.saveString(getActivity(), "bankflag", "1");
+                // UtilPreference.saveString(getActivity(), "bankflag", "1");
                 Intent intent01 = new Intent(getContext(), BankcardActivity.class);
                 bundle = new Bundle();
                 bundle.putString("flag", "1");

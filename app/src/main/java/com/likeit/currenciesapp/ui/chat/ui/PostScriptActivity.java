@@ -95,9 +95,10 @@ public class PostScriptActivity extends BaseActivity implements View.OnClickList
                         truename = obj.optJSONObject("info").optString("truename");
                         avatar = obj.optJSONObject("info").optString("pic");
                         Log.d("TAG", truename + avatar);
-                        tv_name.setText(truename);
-                        Glide.with(PostScriptActivity.this).load(AppConfig.LIKEIT_LOGO1 + avatar).centerCrop().into(iv_image);
+
                     }
+                    tv_name.setText(truename);
+                    Glide.with(PostScriptActivity.this).load(AppConfig.LIKEIT_LOGO1 + avatar).centerCrop().into(iv_image);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

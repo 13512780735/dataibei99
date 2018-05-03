@@ -80,7 +80,36 @@
             android:text="@string/me_name05"
             android:textColor="@color/white" />
     </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/tv_rlService"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:paddingLeft="@dimen/padding_normal"
+        android:layout_marginBottom="2dp"
+        android:paddingRight="@dimen/padding_normal">
 
+        <TextView
+            android:id="@+id/tv_tvService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_service"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name43"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/tv_rlReal_authentication"
         android:layout_width="match_parent"

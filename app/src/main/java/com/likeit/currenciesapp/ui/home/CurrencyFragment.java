@@ -79,6 +79,7 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
     private TextView tvWithdraw;
     private TextView tvWithdraw_;
     private DianInfoEntity mDianInfoEntity;
+    private String work;
 
     public CurrencyFragment() {
         // Required empty public constructor
@@ -100,6 +101,7 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         View view = inflater.inflate(R.layout.fragment_currency, container, false);
         Bundle bundle = getArguments();
+        work= UtilPreference.getStringValue(getActivity(),"work");
         if (bundle != null) {
             data01 = bundle.getInt("huilvid");
             Log.d("Tag", "Data01: " + data01);
@@ -242,6 +244,10 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 getDialog().dismiss();
                 break;
             case R.id.tv_sale://卖出
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 intent = new Intent(getActivity(), SellActivity.class);
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -249,9 +255,13 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
                 break;
             case R.id.tv_buy_in://买进
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 intent = new Intent(getActivity(), BuyInActivity.class);
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -259,11 +269,14 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
                 break;
             case R.id.tv_alipay://充值
             //asdasdasd
-
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable("Dian", mDianInfoEntity);
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -273,7 +286,7 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 //  toActivity(DianSellInputRateActivity.class, bundle);
                 RechargeFragment dialogFragment01 = new RechargeFragment();
                 dialogFragment01.setArguments(bundle);
-                dialogFragment01.show(getFragmentManager(), "dialogFragment");
+                dialogFragment01.show(getFragmentManager(), "dialogFragment");}
 //                intent = new Intent(getActivity(), AlipayActivity.class);
 //                bundle = new Bundle();
 //                bundle.putSerializable("Dian", mDianInfoEntity);
@@ -285,6 +298,10 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
 //                startActivity(intent);
                 break;
             case R.id.tv_negotiation://代付
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 intent = new Intent(getActivity(), NegotiationActivity.class);
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -292,9 +309,13 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
                 break;
             case R.id.tv_Pre_order://预购
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 intent = new Intent(getActivity(), PreOrderActivity.class);
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -302,7 +323,7 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
                 intent.putExtras(bundle);
-                startActivity(intent);
+                startActivity(intent);}
                 break;
             case R.id.tvWithdraw://提领
 //                intent = new Intent(getActivity(), DianSellInputRateActivity.class);
@@ -310,13 +331,16 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
 //                bundle.putSerializable("Dian", mDianInfoEntity);
 //                intent.putExtras(bundle);
 //                startActivity(intent);
-
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable("Dian", mDianInfoEntity);
                 //  toActivity(DianSellInputRateActivity.class, bundle);
                 WithdrawDialogFragment dialogFragment = new WithdrawDialogFragment();
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getFragmentManager(), "dialogFragment");
+                dialogFragment.show(getFragmentManager(), "dialogFragment");}
                 break;
         }
 

@@ -29,6 +29,7 @@ import com.likeit.currenciesapp.ui.base.BaseFragment;
 import com.likeit.currenciesapp.ui.home.WithdrawDialogFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.ToastUtil;
+import com.likeit.currenciesapp.utils.UtilPreference;
 import com.likeit.currenciesapp.views.MyListview;
 import com.loopj.android.http.RequestParams;
 
@@ -69,6 +70,7 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
     private GreenteahyIncomeAdapter mAdapter;
     private TextView tvNodata;
     private Bundle bundle1;
+    private String work;
 
     @Override
     protected int setContentView() {
@@ -79,6 +81,7 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
     @Override
     protected void lazyLoad() {
         //获取点数
+        work= UtilPreference.getStringValue(getActivity(),"work");
         dataList = new ArrayList<GreenteahyInfoEntity>();
         log_type = 2;
         initData();
@@ -267,22 +270,34 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_buy:
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("Dian", mDianInfoEntity);
-                toActivity(DianBuyInputRateActivity.class, bundle);
+                toActivity(DianBuyInputRateActivity.class, bundle);}
                 break;
             case R.id.tv_Withdraw:
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle1 = new Bundle();
                 bundle1.putSerializable("Dian", mDianInfoEntity);
                 WithdrawDialogFragment dialogFragment = new WithdrawDialogFragment();
                 dialogFragment.setArguments(bundle1);
-                dialogFragment.show(getFragmentManager(), "dialogFragment");
+                dialogFragment.show(getFragmentManager(), "dialogFragment");}
                 break;
             case R.id.tv_tvGreenteahy_transfer:
-                bundle1 = new Bundle();
-                bundle1.putSerializable("Dian", mDianInfoEntity);
-                toActivity(TransferAccountsActivity.class, bundle1);
-
+                if("0".equals(work)){
+                    ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
+                    return;
+                }else {
+                    bundle1 = new Bundle();
+                    bundle1.putSerializable("Dian", mDianInfoEntity);
+                    toActivity(TransferAccountsActivity.class, bundle1);
+                }
                 break;
         }
     }

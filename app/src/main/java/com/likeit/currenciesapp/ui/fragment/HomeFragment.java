@@ -155,6 +155,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private List<HomeInfoEntity.AdsBean> imgId;
     private SliderLayout sliderLayout;
     private DefaultSliderView textSliderView;
+    private String work;
 
 
     @Override
@@ -168,6 +169,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         dataList = new ArrayList<GreenteahyInfoEntity>();//收入
         dataList01 = new ArrayList<GreenteahyInfoEntity>();//支出
         sliderShow = findViewById(R.id.slider);//Logo banner
+        work=UtilPreference.getStringValue(getActivity(),"work");
         initView();
         loaddingDialog.show();
         // inithomeData();//首页数据
@@ -644,74 +646,98 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
              * 卖出
              */
             case R.id.tv_sale:
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
                 bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.SELL);
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(SellActivity.class, bundle);
+                toActivity(SellActivity.class, bundle);}
                 break;
             /**
              * 买进
              */
             case R.id.tv_buy_in:
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
                 bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(BuyInActivity.class, bundle);
+                toActivity(BuyInActivity.class, bundle);}
                 break;
             /**
              * 支付宝充值
              */
             case R.id.tv_alipay:
-                bundle = new Bundle();
-                bundle.putSerializable("Dian", mDianInfoEntity);
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.ALIPAY);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                //  toActivity(DianSellInputRateActivity.class, bundle);
-                RechargeFragment dialogFragment01 = new RechargeFragment();
-                dialogFragment01.setArguments(bundle);
-                dialogFragment01.show(getFragmentManager(), "dialogFragment");
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else {
+                    bundle = new Bundle();
+                    bundle.putSerializable("Dian", mDianInfoEntity);
+                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.ALIPAY);
+                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+                    bundle.putString(HomeFragment.COIN_ID, "2");
+                    //  toActivity(DianSellInputRateActivity.class, bundle);
+                    RechargeFragment dialogFragment01 = new RechargeFragment();
+                    dialogFragment01.setArguments(bundle);
+                    dialogFragment01.show(getFragmentManager(), "dialogFragment");
 
-
+                }
 
                 break;
             /**
              * 代付
              */
             case R.id.tv_negotiation:
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
                 bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.OTHER);
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(NegotiationActivity.class, bundle);
+                toActivity(NegotiationActivity.class, bundle);}
                 break;
             /**
              * 预购
              */
             case R.id.tv_Pre_order:
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
                 bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.PRE);
                 bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
                 bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(PreOrderActivity.class, bundle);
+                toActivity(PreOrderActivity.class, bundle);}
                 break;
             /**
              * 提领
              */
             case R.id.tv_Withdraw:
+                if("0".equals(work)){
+                    showToast("您沒有權限操作，請聯系管理員！");
+                    return;
+                }else{
                 bundle = new Bundle();
                 bundle.putSerializable("Dian", mDianInfoEntity);
                 //  toActivity(DianSellInputRateActivity.class, bundle);
                 WithdrawDialogFragment dialogFragment = new WithdrawDialogFragment();
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getFragmentManager(), "dialogFragment");
+                dialogFragment.show(getFragmentManager(), "dialogFragment");}
                 break;
             case R.id.iv_header_right://个人中心
 //                 mViewPage = (NoScrollViewPager) getActivity().findViewById(R.id.home_viewpager);

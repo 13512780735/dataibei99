@@ -12,6 +12,7 @@ import com.likeit.currenciesapp.model.DianInfoEntity;
 import com.likeit.currenciesapp.model.RateInfoEntity;
 import com.likeit.currenciesapp.ui.base.Container;
 import com.likeit.currenciesapp.utils.ToastUtil;
+import com.likeit.currenciesapp.utils.UtilPreference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +28,7 @@ public class ExchangeRateActivity extends Container implements PullToRefreshBase
     private RateInfoEntity mRateInfoEntity;
     private boolean is_kaipan;
     private DianInfoEntity mDianInfoEntity;
+    private String work;
 
 
     @Override
@@ -34,6 +36,7 @@ public class ExchangeRateActivity extends Container implements PullToRefreshBase
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exchange_rate);
         ButterKnife.bind(this);
+
         Bundle bundle=getIntent().getExtras();
         mRateInfoEntity= (RateInfoEntity) bundle.getSerializable("mRateInfoEntity");
         mDianInfoEntity= (DianInfoEntity) bundle.getSerializable("Dian");

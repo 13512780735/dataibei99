@@ -128,6 +128,7 @@ public class DianSellResultActivity extends Container {
     private String bankskey;
     private String bankid01;
     private String taibi;
+    private double hv;
 
 
     @Override
@@ -767,8 +768,10 @@ public class DianSellResultActivity extends Container {
 
         if ("2".equals(type)) {
             inputValue01 = String.valueOf((Integer.valueOf(inputValue)) * nowRate);
+            hv=nowRate;
         } else {
             inputValue01 = inputValue;
+            hv=1;
         }
         Log.d("TAG", inputValue);
         String url = AppConfig.LIKEIT_DO_ORDER;
@@ -777,6 +780,7 @@ public class DianSellResultActivity extends Container {
         params.put("type", "8");
         params.put("htype1", nowCoinId);
         params.put("htype2", "1");
+        params.put("hv", hv);
         params.put("money", inputValue);
         params.put("tel", UtilPreference.getStringValue(mContext, "phone"));
         params.put("bz", bz);
