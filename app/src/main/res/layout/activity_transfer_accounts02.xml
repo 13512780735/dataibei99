@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.Greenteahy.TransferAccounts02Activity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <com.likeit.currenciesapp.views.RoundImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/width40"
+        android:src="@mipmap/icon_avatar" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_normal"
+        android:text="XX"
+        android:textSize="@dimen/text_size_normal" />
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/padding_normal"
+        android:text="XX"
+        android:textColor="@color/gray7"
+        android:textSize="@dimen/text_size_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:padding="10dip"
+            android:text="轉賬金額" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_normal"
+                android:layout_marginLeft="@dimen/margin_normal"
+                android:text="¥"
+                android:textSize="@dimen/text_size_xxhdpi" />
+
+            <EditText
+                android:id="@+id/ed_input"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:padding="@dimen/padding_normal"
+                android:background="@null"
+                android:inputType="number"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray7"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:background="@color/line">
+
+        </View>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:layout_margin="20dip"
+        android:background="@drawable/shape_round_home_rate_pre_sure"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="確認轉賬"
+        android:textColor="@color/white" />
+</LinearLayout>

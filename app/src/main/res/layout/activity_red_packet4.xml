@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.chat.redMessage.RedPacketActivity01">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/headerbg"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/header_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line" />
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="60.0dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:background="@drawable/header_back_bg"
+            android:paddingLeft="10dp"
+            android:text="关闭"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:maxLength="8"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dip"
+            android:maxLength="8"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_marginTop="20dip"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="16dip"
+        android:paddingRight="16dip">
+
+        <LinearLayout
+            android:id="@+id/ll_amount_layout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/_bg_white_round"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_spell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="拼"
+                android:layout_marginLeft="10dip"
+                android:padding="3dip"
+                android:visibility="gone"
+                android:textColor="@color/white"
+                android:background="@color/Loginbg"/>
+            <TextView
+                style="@style/text_black_16"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/jrmf_rp_amount" />
+
+            <EditText
+                android:id="@+id/et_amount"
+                style="@style/text_black_16"
+                android:layout_width="0dip"
+                android:layout_height="@dimen/input_height"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:textCursorDrawable="@drawable/selector_cursor" />
+
+            <TextView
+                style="@style/text_black_16"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base_padding"
+                android:layout_marginRight="@dimen/base_padding"
+                android:gravity="center_vertical"
+                android:text="@string/jrmf_money_yuan2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_common_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray0"
+                android:textSize="12sp"
+                android:padding="10dip"
+                android:text="当前为普通红包，"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="改为拼手气红包"
+                android:textSize="12sp"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:textColor="@color/headerbg"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_spell_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray0"
+                android:textSize="12sp"
+                android:padding="10dip"
+
+                android:text="当前为拼手气红包，"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="改为普通红包"
+                android:textSize="12sp"
+                android:paddingBottom="10dip"
+                android:paddingTop="10dip"
+                android:textColor="@color/headerbg"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_number_layout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dip"
+            android:visibility="gone"
+            android:background="@drawable/_bg_white_round"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text_black_16"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_vertical"
+                android:text="红包个数" />
+
+            <EditText
+                android:id="@+id/et_red_number"
+                style="@style/text_black_16"
+                android:layout_width="0dip"
+                android:layout_height="@dimen/input_height"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:inputType="numberDecimal"
+                android:maxLength="6"
+                android:hint="填写个数"
+                android:textCursorDrawable="@drawable/selector_cursor" />
+
+            <TextView
+                style="@style/text_black_16"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/base_padding"
+                android:layout_marginRight="@dimen/base_padding"
+                android:gravity="center_vertical"
+                android:text="个" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_group_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray0"
+            android:textSize="12sp"
+            android:visibility="gone"
+            android:layout_margin="10dp"
+            android:text="本群共3人"/>
+        <EditText
+            android:id="@+id/et_peak_message"
+            style="@style/text_black_16"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginTop="@dimen/base_padding"
+            android:background="@drawable/_bg_white_round"
+            android:gravity="left|center_vertical"
+            android:hint="@string/_bribery_message"
+            android:maxLength="25"
+            android:paddingLeft="@dimen/base_padding"
+            android:paddingRight="@dimen/base_padding"
+            android:textColorHint="@color/color_b7b7b7"
+            android:textCursorDrawable="@drawable/selector_cursor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_padding"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/_rmb" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                style="@style/text_black_28"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/actionbar_height"
+                android:gravity="center"
+                android:textStyle="normal"
+                android:typeface="serif"
+                tools:text="0.00" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_putin"
+            style="@style/text_white_16"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/base_padding"
+            android:background="@drawable/selector_common_btn"
+            android:text="@string/btn_put" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.login.ForgetPwdActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_phone"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/forgetpwd_name02" />
+
+        <EditText
+            android:id="@+id/login_et_phone"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="5"
+            android:background="@null"
+            android:inputType="number"
+            android:hint="@string/forgetpwd_name03"
+            android:textColorHint="@color/headerbg"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/bgcolor"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_code"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/forgetpwd_name04" />
+
+        <EditText
+            android:id="@+id/login_et_code"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="20dip"
+            android:layout_weight="4"
+            android:background="@null"
+            android:hint="@string/register_name15"
+            android:inputType="number"
+            android:textColorHint="@color/headerbg"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/send_code_btn"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="3"
+            android:background="@drawable/shape_round_home_rate_pre_sure"
+            android:gravity="center"
+            android:padding="12dip"
+            android:text="@string/forgetpwd_name05"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/bgcolor"></View>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_newcode"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/forgetpwd_name06" />
+
+        <EditText
+            android:id="@+id/login_et_new_pwd"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="5"
+            android:background="@null"
+            android:hint="@string/forgetpwd_name07"
+            android:inputType="textPassword"
+            android:textColorHint="@color/headerbg"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/bgcolor"></View>
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/icon_code_ok"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/forgetpwd_name08" />
+
+        <EditText
+            android:id="@+id/login_et_sure_pwd"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="5"
+            android:background="@null"
+            android:hint="@string/forgetpwd_name09"
+            android:inputType="textPassword"
+            android:textColorHint="@color/headerbg"
+            android:textSize="14sp" />
+    </LinearLayout>-->
+
+
+    <TextView
+        android:id="@+id/login_tv_get_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dip_xlarge"
+        android:layout_marginRight="@dimen/dip_xlarge"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/shape_round_login_btn_"
+        android:gravity="center"
+        android:padding="16dip"
+        android:text="@string/forgetpwd_name01"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_xhdpi" />
+</LinearLayout>

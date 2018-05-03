@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bgcolor"
+    tools:context="com.likeit.currenciesapp.ui.fragment.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+   <include layout="@layout/layout_header_with_back_img"></include>
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/ll_home_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:divider="@color/bgcolor"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/bgcolor"
+            android:orientation="vertical">
+        <include layout="@layout/layout_home_header"></include>
+        </LinearLayout>
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+</LinearLayout>

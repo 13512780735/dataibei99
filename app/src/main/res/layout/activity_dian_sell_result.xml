@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.Greenteahy.DianSellResultActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/comm_item_rate_info_result" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_result_item_height"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="會員約定收款方式"
+                android:textColor="@color/rate_input_txt_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_select_bank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:background="@color/white"
+                android:drawableRight="@mipmap/icon_right"
+                android:padding="20dp"
+                android:text="請選擇提領帳號" />
+
+            <LinearLayout
+                android:id="@+id/ll_bankInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_bankdaihao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_bankdaihao"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:lines="1"
+                        />
+
+                    <EditText
+                        android:id="@+id/apply_et_bankdaihao"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+                <LinearLayout
+                    android:id="@+id/ll_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_account"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                      />
+
+                    <EditText
+                        android:id="@+id/apply_et_account"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:inputType="number"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+
+                <LinearLayout
+                    android:id="@+id/ll_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        />
+
+                    <EditText
+                        android:id="@+id/apply_et_name"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+
+                <LinearLayout
+                    android:id="@+id/ll_bankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_bankName"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_weight="2"
+                      />
+
+                    <EditText
+                        android:id="@+id/apply_et_bankName"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+
+                <LinearLayout
+                    android:id="@+id/ll_bankCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_bankCity"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                      />
+
+                    <EditText
+                        android:id="@+id/apply_et_bankCity"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@color/line"></View>
+
+                <LinearLayout
+                    android:id="@+id/ll_bankZH"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:orientation="horizontal"
+                    android:padding="10dip">
+
+                    <TextView
+                        android:id="@+id/tv_bankZH"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:lines="1"
+                        />
+
+                    <EditText
+                        android:id="@+id/apply_et_bankZH"
+                        android:layout_width="0dip"
+                        android:layout_height="30dip"
+                        android:layout_marginLeft="10dip"
+                        android:layout_weight="5"
+                        android:background="@drawable/shape_round_stroke_rate_input3"
+                        android:textColor="@color/gray7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <EditText
+                    android:id="@+id/input_ps_et"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_round_stroke_rate_input3"
+                    android:gravity="top|left"
+                    android:hint="備註"
+                    android:padding="5dp"
+                    android:text=""
+                    android:textColor="@color/rate_input_txt_color"
+                    android:textColorHint="@color/gray7"
+                    android:textSize="@dimen/rate_input_txt_size" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/go_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/defulat_button_height"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_round_rate_submit_butt"
+                android:gravity="center"
+                android:text="送   出"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:height="640dp"
+        android:drawable="@android:color/white" />
+    <item
+        android:height="20dip"
+        android:drawable="@drawable/tpv_statusbar_background"
+        android:gravity="top" />
+</layer-list>

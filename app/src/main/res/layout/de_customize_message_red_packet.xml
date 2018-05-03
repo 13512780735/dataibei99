@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/rc_layout"
+    android:layout_width="206dp"
+    android:layout_height="100dip"
+    android:layout_centerHorizontal="true"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:layout_marginBottom="5dp"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:id="@id/rc_img"
+        android:layout_width="206dp"
+        android:layout_height="90dip"
+        android:background="#fa9d3b"
+        android:scaleType="fitXY">
+
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@id/rc_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="40dip">
+
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="恭喜发财，大吉大利！"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@id/rc_content"
+            android:layout_width="206dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#FFFFFF"
+            android:gravity="left|center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:text="轉轉寳紅包"
+            android:textColor="#999999"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.me.RedPacketActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/greenteahy_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_income"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="5dp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/greenteahy_name08"
+                android:textColor="@drawable/selected_greenteahy_tab__butt"
+                android:textSize="14sp" />
+
+
+            <RadioButton
+                android:id="@+id/radio_expend"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="5dp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/greenteahy_name09"
+                android:textColor="@drawable/selected_greenteahy_tab__butt"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="1dip"
+            android:orientation="horizontal">
+
+
+            <View
+                android:id="@+id/line_income"
+                android:layout_width="0dip"
+                android:layout_height="2dp"
+                android:layout_toLeftOf="@+id/line"
+                android:layout_weight="1"
+                android:background="@color/headerbg" />
+
+            <View
+                android:id="@+id/line_expend"
+                android:layout_width="0dip"
+                android:layout_height="2dp"
+                android:layout_toRightOf="@+id/line"
+                android:layout_weight="1"
+                android:background="@color/headerbg"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line_color" />
+    </LinearLayout>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/itemsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

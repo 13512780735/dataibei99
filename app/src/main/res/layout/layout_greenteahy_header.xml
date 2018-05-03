@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/headerbg"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dip_xlarge">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/greenteahy_name02"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_total_dian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/padding_normal"
+                android:text="6,578.80"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_xxhdpi" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_annual_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="@string/greenteahy_name04"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/greenteahy_name03"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title" />
+
+                <TextView
+                    android:id="@+id/textView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/textView01"
+                    android:text="+21.08點"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/greenteahy_name05"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title" />
+
+                <TextView
+                    android:id="@+id/textView04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/textView03"
+                    android:text="+388.68點"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/tv_rlGreenteahy_transfer"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="@dimen/margin_normal"-->
+    <!--android:background="@color/white"-->
+    <!--android:paddingLeft="@dimen/padding_normal"-->
+    <!--android:paddingRight="@dimen/padding_normal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tv_tvGreenteahy_transfer"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:drawableLeft="@mipmap/icon_greenteahy_transfer"-->
+    <!--android:drawablePadding="20dip"-->
+    <!--android:gravity="center_vertical"-->
+    <!--android:padding="@dimen/padding_normal"-->
+    <!--android:text="@string/greenteahy_name07" />-->
+
+
+    <!--<ImageView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:src="@mipmap/icon_right" />-->
+    <!--</RelativeLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_normal"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_tvGreenteahy_transfer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/greenteahy_name07"
+            android:textSize="@dimen/text_size_xhdpi" />
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/headerbg"
+            android:gravity="center"
+            android:padding="14dip"
+            android:text="@string/greenteahy_name10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_xhdpi" />
+
+        <TextView
+            android:id="@+id/tv_Withdraw"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:gravity="center"
+            android:padding="14dip"
+            android:text="@string/greenteahy_name11"
+            android:textColor="@color/headerbg"
+            android:textSize="@dimen/text_size_xhdpi" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/greenteahy_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_income"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="true"
+                android:drawablePadding="5dp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/greenteahy_name08"
+                android:textColor="@drawable/selected_greenteahy_tab__butt"
+                android:textSize="14sp" />
+
+
+            <RadioButton
+                android:id="@+id/radio_expend"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawablePadding="5dp"
+                android:gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/greenteahy_name09"
+                android:textColor="@drawable/selected_greenteahy_tab__butt"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="1dip"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <View
+                android:id="@+id/line_income"
+                android:layout_width="0dip"
+                android:layout_height="2dp"
+                android:layout_toLeftOf="@+id/line"
+                android:layout_weight="1"
+                android:background="@color/headerbg" />
+
+            <View
+                android:id="@+id/line_expend"
+                android:layout_width="0dip"
+                android:layout_height="2dp"
+                android:layout_toRightOf="@+id/line"
+                android:layout_weight="1"
+                android:background="@color/headerbg"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line_color" />
+    </LinearLayout>
+
+    <com.likeit.currenciesapp.views.MyListview
+        android:id="@+id/income_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@color/bgcolor"
+        android:dividerHeight="1dip"
+        android:visibility="gone"></com.likeit.currenciesapp.views.MyListview>
+
+    <com.likeit.currenciesapp.views.MyListview
+        android:id="@+id/expend_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@color/bgcolor"
+        android:dividerHeight="1dip"></com.likeit.currenciesapp.views.MyListview>
+
+    <TextView
+        android:id="@+id/nodata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:text="暫無數據"
+        android:visibility="gone" />
+</LinearLayout>

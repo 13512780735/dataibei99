@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.likeit.currenciesapp">
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 控制振动器 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 防止设备休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.kugou.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="com.kugou.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED" />
+    <uses-permission android:name="com.kugou.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 保存资源到SD卡 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <permission android:name="android.permission.DEVICE_POWER" />
+
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
+    <permission android:name="android.permission.WRITE_APN_SETTINGS" />
+
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RAISED_THREAD_PRIORITY" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <!-- ⼩米 配置开始 < -->
+    <permission
+        android:name="com.likeit.currenciesapp.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.likeit.currenciesapp.permission.MIPUSH_RECEIVE" />
+    <!-- ⼩米 配置结束 < -->
+    <!-- GCM 配置开始 < -->
+    <permission
+        android:name="com.likeit.currenciesapp.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.likeit.currenciesapp.permission.C2D_MESSAGE" />
+
+    <!-- GCM 配置结束 < -->
+    <application
+        android:name=".app.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:persistent="true"
+        android:supportsRtl="true"
+        android:theme="@style/MyAppTheme">
+        <activity
+            android:name=".ui.MainActivity"
+            android:keepScreenOn="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:pathPrefix="/push_message"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".ui.chat.ui.ContactActivity" />
+        <activity android:name=".ui.home.ExchangeRateActivity" />
+        <activity android:name=".ui.home.SellActivity" />
+        <activity android:name=".ui.home.BuyInActivity" />
+        <activity android:name=".ui.home.AlipayActivity" />
+        <activity android:name=".ui.home.NegotiationActivity" />
+        <activity android:name=".ui.home.PreOrderActivity" />
+        <activity android:name=".ui.me.SettingActivity" />
+        <activity android:name=".ui.me.RealActivity" />
+        <activity android:name=".ui.me.RedPacketActivity" />
+        <activity android:name=".ui.me.BankcardActivity" />
+        <activity android:name=".ui.login.RegisterActivity" />
+        <activity android:name=".ui.login.ForgetPwdActivity" />
+        <activity android:name=".ui.login.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.WebTermsServiceActivity" />
+        <activity android:name=".ui.home.NoticeListActivity" />
+        <activity android:name=".ui.home.SellResultActivity" />
+        <activity android:name=".ui.home.BuyResultActivity" />
+        <activity android:name=".ui.home.AlipayResultActivity" />
+        <activity android:name=".ui.home.OtherResultActivity" />
+        <activity android:name=".ui.home.PreResultActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.likeit.currenciesapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".ui.Greenteahy.DianBuyInputRateActivity" />
+        <activity android:name=".ui.Greenteahy.DianSellInputRateActivity" />
+        <activity android:name=".ui.Greenteahy.DianBuyResultActivity" />
+        <activity android:name=".ui.Greenteahy.DianSellResultActivity" />
+        <activity android:name=".ui.me.OrderListActivity" />
+        <activity android:name=".ui.home.WebActivity" />
+        <activity android:name=".ui.me.ModifyPasswdActivity" />
+        <!-- bugly -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:keepScreenOn="true"
+            android:theme="@android:style/Theme.Translucent" />
+        <!-- 融云IM -->
+        <provider
+            android:name=".utils.MyFileProvider"
+            android:authorities="com.likeit.currenciesapp.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/rc_file_path" />
+        </provider>
+
+        <service
+            android:name="io.rong.imlib.ipc.RongService"
+            android:process=":ipc" />
+        <service android:name="io.rong.imlib.ReConnectService" />
+
+        <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
+        <receiver
+            android:name="io.rong.imlib.HeartbeatReceiver"
+            android:process=":ipc" />
+
+        <service android:name=".ui.chat.server.UpdateService" />
+
+        <receiver
+            android:name=".ui.chat.SealNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="InstallChannel"
+            android:value="CHANNAL" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="RongCloudApp" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="577b2b55e0f55afbcb0026c6" />
+
+        <activity android:name=".ui.chat.ui.activity.NewFriendListActivity" />
+        <activity android:name=".ui.chat.ui.activity.SearchFriendActivity" />
+        <activity android:name=".ui.chat.ui.activity.SelectFriendsActivity" />
+        <activity android:name=".ui.chat.ui.activity.UserDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.CreateGroupActivity" />
+        <activity android:name=".ui.chat.ui.activity.DoubleChatRoomActivity" />
+        <activity
+            android:name=".ui.chat.ui.activity.PublicServiceInfoActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:pathPrefix="/publicServiceProfile"
+                    android:scheme="rong" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:pathPrefix="/publicServiceInfo"
+                    android:scheme="rong" />
+            </intent-filter>
+            >
+        </activity>
+        >
+        <activity
+            android:name=".ui.chat.ui.activity.SubConversationListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:path="/subconversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        >
+        <activity
+            android:name=".ui.chat.ui.activity.ConversationListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:path="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+            >
+        </activity>
+        <activity
+            android:name=".ui.chat.ui.activity.ConversationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.likeit.currenciesapp"
+                    android:pathPrefix="/conversation/"
+                    android:scheme="rong" />
+            </intent-filter>
+            >
+        </activity>
+
+        <service
+            android:name="io.rong.imlib.ipc.RongService"
+            android:process=":ipc" />
+        <service android:name="io.rong.imlib.ReConnectService" />
+
+        <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
+        <receiver
+            android:name="io.rong.imlib.HeartbeatReceiver"
+            android:process=":ipc" />
+
+        <service android:name=".ui.chat.server.UpdateService" />
+
+        <receiver
+            android:name=".ui.chat.SealNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />
+                <action android:name="io.rong.push.intent.MESSAGE_CLICKED" />
+                <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.chat.ui.activity.NoteInformationActivity" />
+        <activity android:name=".ui.chat.ui.activity.ReadReceiptDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.GroupDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.PrivateChatDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.DiscussionDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.SealSearchChattingDetailActivity" />
+        <activity android:name=".ui.chat.ui.activity.MembersOnlineStatusActivity" />
+        <activity android:name=".ui.chat.ui.activity.TotalGroupMemberActivity" />
+        <activity android:name=".ui.chat.ui.activity.GroupNoticeActivity" />
+        <activity android:name=".ui.chat.ui.activity.GroupListActivity" />
+        <activity android:name=".ui.me.AddBankActivity" />
+        <activity android:name=".ui.me.AddWeixinZFBActivity" />
+        <activity android:name=".ui.Greenteahy.TransferAccountsActivity" />
+        <activity android:name=".ui.Greenteahy.TransferAccounts02Activity" />
+        <activity android:name=".ui.me.PwdSettingActivity" />
+        <activity android:name=".ui.me.PayPwdActivity" />
+        <activity android:name=".ui.chat.ui.KeFuSearchActivity" />
+        <activity android:name=".ui.me.ForgetPwd02Activity" />
+        <activity android:name=".ui.chat.ui.KeFuListActivity" />
+        <activity android:name=".ui.me.QRCodeCardActivity" />
+        <activity android:name=".ui.chat.ui.ScanActivity" />
+        <activity android:name=".ui.chat.ui.PostScriptActivity" />
+
+        <!-- 第三方的推送 权限 广播 和服务 -->
+
+        <service
+            android:name="com.xiaomi.push.service.XMPushService"
+            android:enabled="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
+        <!-- 小米 配置开始 < -->
+        <service
+            android:name="com.xiaomi.push.service.XMPushService"
+            android:enabled="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true" />
+        <!-- 注：此service必须在2.2.5版本以后（包括2.2.5版本）加入 -->
+
+        <service
+            android:name="com.xiaomi.push.service.XMJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 注：此service必须在3.0.1版本以后（包括3.0.1版本）加入 -->
+
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.PingReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="io.rong.push.platform.MiMessageReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.xiaomi.mipush.ERROR" />
+            </intent-filter>
+        </receiver>
+        <!-- 小米 配置结束 < -->
+
+
+        <!-- HMS 配置开始 -->
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="100008903" />
+
+        <!-- 第三方相关 :接收Push消息（注册、Push消息、Push连接状态）广播 -->
+        <receiver android:name="io.rong.push.platform.HMSReceiver">
+            <intent-filter>
+
+                <!-- 必须,用于接收token -->
+                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
+                <!-- 必须，用于接收消息 -->
+                <action android:name="com.huawei.android.push.intent.RECEIVE" />
+                <!-- 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
+                <action android:name="com.huawei.android.push.intent.CLICK" />
+                <!-- 可选，查看push通道是否连接，不查看则不需要 -->
+                <action android:name="com.huawei.intent.action.PUSH_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.huawei.hms.support.api.push.PushEventReceiver">
+            <intent-filter>
+
+                <!-- 接收通道发来的通知栏消息，兼容老版本Push -->
+                <action android:name="com.huawei.intent.action.PUSH" />
+            </intent-filter>
+        </receiver>
+        <!-- HMS 配置结束 -->
+
+
+        <!-- GCM 配置 < -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <!-- <category android:name="cn.rongcloud.im" />< -->
+                <category android:name="com.likeit.currenciesapp" />
+                <!-- 替换为自己的packagename < -->
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="io.rong.push.platform.RongGcmListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="io.rong.push.platform.RongGCMInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+        <!-- GCM 配置结束 < -->
+
+
+        <!-- 第三方推送的权限 广播 服务 配置结束 -->
+
+        <activity
+            android:name=".ui.Greenteahy.IncomeExpendActivity"
+            android:label="@string/title_activity_income_expend"
+            android:launchMode="singleTop"
+            android:theme="@style/MyAppTheme">
+            <intent-filter>
+                <action android:name="io.rong.intent.action.voip.INCOMEEXPEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        >
+        <activity android:name=".ui.chat.redMessage.RedPacketActivity01" />
+        <activity android:name=".ui.chat.redMessage.GroupRedListActivity" />
+        <activity android:name=".ui.chat.transferMessage.TransferActivity" />
+        <activity android:name=".ui.me.AddTaiwanBankActivity" />
+        <activity android:name=".ui.Greenteahy.DianSellResult01Activity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+android {
+    compileSdkVersion rootProject.targetSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    defaultConfig {
+        applicationId "com.likeit.currenciesapp"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+//        versionCode 38
+//        versionName "5.8"
+        //转转宝
+        versionCode 43
+        versionName "2.0.1"
+//        versionCode 46
+//        versionName "6.1"
+        multiDexEnabled true
+        aaptOptions.cruncherEnabled = false
+        aaptOptions.useNewCruncher = false
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a'
+        }
+    }
+    productFlavors {
+        arm {
+            ndk {
+                abiFilters "armeabi"
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    //签名信息
+    signingConfigs {
+        release {
+            storeFile file("zznc.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+            //https://developer.android.com/about/versions/nougat/android-7.0.html#apk_signature_v2
+            v2SigningEnabled true
+        }
+
+        debug {
+            storeFile file("zznc.jks")
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+            //https://developer.android.com/about/versions/nougat/android-7.0.html#apk_signature_v2
+            v2SigningEnabled true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            // 设置Jni so文件路径 如果有jniLibs目录就不需要设置，好像手动创建的 jniLibs目录无效
+            jniLibs.srcDirs = ['libs']
+        }
+        instrumentTest.setRoot('tests')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile project(path: ':baseapp_module')
+    compile project(path: ':pulltorefreshlibrary')
+    compile project(':IMKit')
+    compile project(':CallKit')
+    //compile project(':RedPacket')
+    compile project(':recognizer')
+//    compile project(':contactcard')
+    compile project(':sticker')
+    compile(name: 'HMS-SDK-2.4.0.300', ext: 'aar')
+    compile files('libs/greendao-1.3.7.jar')
+    compile files('libs/org.apache.http.legacy.jar')
+    compile files('libs/umeng-analytics-v5.2.4.jar')
+    compile files('libs/jsoup-1.8.3.jar')
+    compile files('libs/MiPush_SDK_Client_3_2_2.jar')
+    compile(name: 'HMS-SDK-2.4.0.300', ext: 'aar')
+    compile files('libs/qiniu-android-sdk-7.1.0.jar')
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.daimajia.slider:library:1.1.5@aar'
+    compile 'com.daimajia.androidanimations:library:1.1.3@aar'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'me.weyye.hipermission:library:1.0.7'
+    compile 'com.alibaba:fastjson:1.2.10'
+    compile 'com.yalantis:ucrop:2.2.0-native'
+    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
+    compile 'com.tencent.bugly:crashreport_upgrade:1.3.0'
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.zhy:autolayout:1.4.5'
+    compile 'com.lqr.ninegridimageview:library:1.0.0'
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
+    compile 'com.lqr.imagepicker:library:1.0.0'
+    compile 'cjt.library.wheel:camera:0.1.9'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+}
+repositories { flatDir { dirs 'aars' } }

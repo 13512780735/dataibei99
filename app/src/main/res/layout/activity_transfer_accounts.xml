@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context="com.likeit.currenciesapp.ui.Greenteahy.TransferAccountsActivity">
+    <include layout="@layout/layout_header_with_back"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="10dip"
+        android:paddingLeft="10dip"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="對方賬號：" />
+
+        <EditText
+            android:id="@+id/apply_et_account"
+            android:layout_width="0dip"
+            android:layout_height="30dip"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="5"
+            android:background="@null"
+            android:inputType="number"
+            android:hint="請輸入對方帳號"
+            android:textColor="@color/gray7"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dip"
+        android:background="@color/white"
+        android:textColor="@color/headerbg"
+        android:text="註：轉賬實時到賬，對方即使受到對應“賺賺寶”金額。"/>
+
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:layout_margin="20dip"
+        android:background="@drawable/shape_round_home_rate_pre_sure"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="下一步"
+        android:textColor="@color/white" />
+</LinearLayout>

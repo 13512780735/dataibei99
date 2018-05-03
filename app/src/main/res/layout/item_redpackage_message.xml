@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_msg"
+    android:layout_width="220dp"
+    android:layout_height="100dp"
+    android:background="@drawable/_bg_from_hongbao2">
+
+    <TextView
+        android:id="@+id/tv_store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:singleLine="true"
+        android:layout_marginTop="20dip"
+        android:text="恭喜发财，大吉大利"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_normal" />
+
+
+    <TextView
+        android:id="@+id/tv_desc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="轉轉寳红包"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="20dip"
+        android:textColor="@color/gray0"
+        android:textSize="@dimen/text_size_hdpi" />
+
+</RelativeLayout>

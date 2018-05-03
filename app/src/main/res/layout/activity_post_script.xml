@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.chat.ui.PostScriptActivity">
+
+    <!--<include layout="@layout/layout_header_with_back"></include>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="40px"
+        android:text="@string/postscript_tip"
+        android:textColor="@color/gray2"
+        android:textSize="12sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px">
+
+        <EditText
+            android:id="@+id/etMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@null"
+            android:drawableBottom="@drawable/shape_bottom_green"
+            android:drawablePadding="20px"
+            android:gravity="bottom"
+            android:hint=""
+            android:textColorHint="@color/gray3"
+            android:textSize="14sp"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/ibClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
+            android:background="@null"
+            android:src="@mipmap/ic_delete" />
+
+    </RelativeLayout>
+</LinearLayout>

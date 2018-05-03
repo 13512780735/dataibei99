@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.home.ExchangeRateActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/ll_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:divider="@color/bgcolor"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_rmb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvrmb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_rmb"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name02"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_dollar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvdollar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_dollar"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name03"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_krw"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvkrw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_krw"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name04"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_yen"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvyen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_yen"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name05"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_baht"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvbaht"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_baht"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name06"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tv_rl_hkd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/rate_input_item_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/rate_input_item_gap"
+                android:paddingLeft="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal">
+
+                <TextView
+                    android:id="@+id/tv_tvhkd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@mipmap/icon_hkd"
+                    android:drawablePadding="@dimen/padding_normal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/padding_normal"
+                    android:text="@string/exchange_name07"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="15dip"
+                    android:src="@mipmap/icon_right" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+</LinearLayout>

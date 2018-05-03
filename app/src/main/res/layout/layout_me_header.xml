@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/headerbg"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <com.likeit.currenciesapp.views.CircleImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/width80"
+                android:layout_height="@dimen/width80"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_me_avatar" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/padding_normal"
+                android:text="@string/me_name02"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/padding_normal"
+                android:text="@string/me_name03"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/headerbg"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name04"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_last_login"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name05"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlReal_authentication"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvReal_authentication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_me_real_authentication"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name07" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlRCordCard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvQRCordCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_qcard"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="二維碼名片" />
+
+        <ImageView
+            android:id="@+id/ivQRCordCard"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlRed_packet"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvRed_packet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_me_red_packet"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name08" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlGreenteahy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvGreenteahy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_me__greenteahy"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name09" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlOrder_inquiry"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvOrder_inquiry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_indent"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name39" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlBankcard"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvBankcard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_me_bankcard"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name10" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"></View>
+
+    <RelativeLayout
+        android:id="@+id/tv_rlSetting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding_normal"
+        android:paddingRight="@dimen/padding_normal">
+
+        <TextView
+            android:id="@+id/tv_tvSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@mipmap/icon_me_setting"
+            android:drawablePadding="5dip"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_normal"
+            android:text="@string/me_name11" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_right" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tvLogout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/dip_xlarge"
+        android:text="@string/me_name12" />
+</LinearLayout>

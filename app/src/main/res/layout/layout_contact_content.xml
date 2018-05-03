@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_online_service"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="@dimen/width60"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/content_online_service"
+                android:drawablePadding="10dip"
+                android:gravity="center_vertical"
+                android:text="@string/chat_name05" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dip"
+                android:drawableRight="@mipmap/icon_right"
+                android:gravity="center_vertical"
+                android:textColor="@color/gray1"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/bgcolor"></View>
+
+        <RelativeLayout
+            android:id="@+id/rl_new_friend"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="@dimen/width60"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/content_new_friend"
+                android:drawablePadding="10dip"
+                android:gravity="center_vertical"
+                android:text="@string/chat_name06" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dip"
+                android:drawableRight="@mipmap/icon_right"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/gray1"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/bgcolor"></View>
+
+        <RelativeLayout
+            android:id="@+id/rl_friend_circle"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="@dimen/width60"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@mipmap/content_friend_circle"
+                android:drawablePadding="10dip"
+                android:gravity="center_vertical"
+                android:text="@string/chat_name07" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dip"
+                android:drawableRight="@mipmap/icon_right"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/gray1"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/bgcolor"></View>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width40"
+        android:background="@color/bgcolor"
+        android:paddingLeft="10dip"
+        android:paddingTop="5dip"
+        android:paddingBottom="5dip"
+        android:gravity="center_vertical"
+        android:text="@string/chat_name04"
+        android:textColor="@color/gray7"
+        android:textSize="12sp" />
+    <com.likeit.currenciesapp.views.MyListview
+        android:id="@+id/contact_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:divider="@color/bgcolor"
+        android:dividerHeight="1dip"></com.likeit.currenciesapp.views.MyListview>
+</LinearLayout>

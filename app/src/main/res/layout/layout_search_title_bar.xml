@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/headerbg">
+    <ImageView
+        android:id="@+id/ac_iv_press_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:padding="10dip"
+        android:src="@drawable/header_back"
+        android:layout_marginLeft="10dip"
+        />
+
+    <EditText
+        android:id="@+id/ac_et_search"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_edit_text_white"
+        android:drawableLeft="@drawable/ac_et_search_icon"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/ac_search_cancel_icon"
+        android:paddingRight="10dip"
+        android:focusableInTouchMode="true"
+        android:hint="@string/Search"
+        android:imeActionLabel=""
+        android:imeOptions="actionSearch"
+        android:inputType="textNoSuggestions"
+        android:maxLines="1"
+        android:textColor="#ffffff"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" />
+</LinearLayout>

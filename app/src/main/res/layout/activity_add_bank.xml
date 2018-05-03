@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.me.AddBankActivity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_select_bank"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rate_input_item_height"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:text="@string/bank_name15" />
+
+            <TextView
+                android:id="@+id/apply_et_select_bank"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:drawablePadding="10dip"
+                android:drawableRight="@mipmap/icon_right"
+                android:gravity="right"
+                android:text="@string/bank_name14"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="账号：" />
+
+            <EditText
+                android:id="@+id/apply_et_account"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:hint="@string/me_name28"
+                android:inputType="number"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="戶名：" />
+
+            <EditText
+                android:id="@+id/apply_et_name"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:hint="@string/bank_name6"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/bank_name10" />
+
+            <EditText
+                android:id="@+id/apply_et_bankName"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:hint="@string/bank_name7"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/bank_name11" />
+
+            <EditText
+                android:id="@+id/apply_et_bankCity"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:hint="@string/bank_name8"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="horizontal"
+            android:padding="10dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:lines="1"
+                android:text="@string/bank_name12" />
+
+            <EditText
+                android:id="@+id/apply_et_bankZH"
+                android:layout_width="0dip"
+                android:layout_height="30dip"
+                android:layout_marginLeft="10dip"
+                android:layout_weight="5"
+                android:background="@null"
+                android:hint="@string/bank_name9"
+                android:textColor="@color/gray7"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@color/line"></View>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width60"
+        android:layout_margin="20dip"
+        android:background="@drawable/shape_round_home_rate_pre_sure"
+        android:gravity="center"
+        android:padding="10dip"
+        android:textColor="@color/white" />
+</LinearLayout>
