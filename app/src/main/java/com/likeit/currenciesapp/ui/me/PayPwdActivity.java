@@ -9,8 +9,8 @@ import android.widget.TextView;
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.ui.base.Container;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
-import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.StringUtil;
 import com.loopj.android.http.RequestParams;
 
@@ -37,7 +37,6 @@ public class PayPwdActivity extends Container {
 
 
     private String keys;
-    private LoaddingDialog loaddingDialog;
     private String oldPwd;
     private String newPwd;
     private String reNewPwd;
@@ -48,7 +47,6 @@ public class PayPwdActivity extends Container {
         setContentView(R.layout.activity_pay_pwd);
         ButterKnife.bind(this);
         keys = getIntent().getStringExtra("keys");
-        loaddingDialog = new LoaddingDialog(this);
         initView();
     }
 
@@ -98,7 +96,7 @@ public class PayPwdActivity extends Container {
 
 
     private void setPwd() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_SET_PAYPWD;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -107,7 +105,7 @@ public class PayPwdActivity extends Container {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj=new JSONObject(response);
                     String status=obj.optString("status");
@@ -130,13 +128,13 @@ public class PayPwdActivity extends Container {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
 
     private void editPwd() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EDIT_PAYPWD;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -146,7 +144,7 @@ public class PayPwdActivity extends Container {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj=new JSONObject(response);
                     String status=obj.optString("status");
@@ -169,7 +167,7 @@ public class PayPwdActivity extends Container {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }

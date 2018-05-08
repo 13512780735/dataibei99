@@ -36,6 +36,7 @@ import com.likeit.currenciesapp.model.UserInfo;
 import com.likeit.currenciesapp.ui.Greenteahy.DianSellInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.IncomeExpendActivity;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.home.AlipayActivity;
 import com.likeit.currenciesapp.ui.home.BuyInActivity;
 import com.likeit.currenciesapp.ui.home.ExchangeRateActivity;
@@ -171,7 +172,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         sliderShow = findViewById(R.id.slider);//Logo banner
         work=UtilPreference.getStringValue(getActivity(),"work");
         initView();
-        loaddingDialog.show();
+        LoadDialog.show(getActivity());
         // inithomeData();//首页数据
         initData();//汇率获取
         inithomeData();
@@ -203,7 +204,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+               LoadDialog.dismiss(getActivity());
                 Log.d("TAG", response);
                 try {
                     JSONObject object = new JSONObject(response);
@@ -230,7 +231,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override
@@ -279,7 +280,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override
@@ -320,7 +321,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override
@@ -356,7 +357,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override
@@ -419,7 +420,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override
@@ -464,7 +465,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
 
             @Override

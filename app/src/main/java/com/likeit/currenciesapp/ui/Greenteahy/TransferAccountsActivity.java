@@ -12,6 +12,7 @@ import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.model.DianInfoEntity;
 import com.likeit.currenciesapp.model.TransferAccountInfoEntity;
 import com.likeit.currenciesapp.ui.base.Container;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.MyActivityManager;
@@ -34,7 +35,6 @@ public class TransferAccountsActivity extends Container {
     EditText edaccount;
     @BindView(R.id.tv_apply)
     TextView tv_apply;
-    private LoaddingDialog loadingDialog;
     private TransferAccountInfoEntity transferAccountInfoEntity;
     private TransferAccountsActivity mContext;
     private DianInfoEntity dianInfoEntity;
@@ -51,7 +51,6 @@ public class TransferAccountsActivity extends Container {
         MyActivityManager.getInstance().addActivity(this);
         mContext=this;
         ButterKnife.bind(this);
-        loadingDialog=new LoaddingDialog(this);
         initView();
     }
 
@@ -76,7 +75,7 @@ public class TransferAccountsActivity extends Container {
             ToastUtil.showS(mContext,"賬號不能為空");
             return;
         }
-        loadingDialog.show();
+        LoadDialog.show(mContext);
         String url= AppConfig.LIKEIT_TRANSFER_USER_INFO;
         RequestParams params=new RequestParams();
         params.put("ukey", UtilPreference.getStringValue(mContext,"ukey"));
@@ -84,7 +83,7 @@ public class TransferAccountsActivity extends Container {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loadingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject object=new JSONObject(response);
                     String status=object.optString("status");
@@ -107,7 +106,7 @@ public class TransferAccountsActivity extends Container {
 
             @Override
             public void failed(Throwable e) {
-
+                LoadDialog.dismiss(mContext);
             }
         });
     }

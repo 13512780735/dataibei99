@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.likeit.currenciesapp.R;
-import com.likeit.currenciesapp.configs.AppConst;
 import com.likeit.currenciesapp.thread.ThreadPoolFactory;
 import com.likeit.currenciesapp.ui.base.Container;
 import com.likeit.currenciesapp.utils.UIUtils;

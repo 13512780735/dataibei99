@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.ToastUtil;
@@ -44,7 +45,6 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
     private TextView tv_money;
     private String name;
     private PswInputView psw_input;
-    private LoaddingDialog loaddingDialog;
     private String targetId;
     private String message, groupNumber, rednumber, redType, type;
     private Conversation.ConversationType conversationType;
@@ -71,7 +71,6 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
         } else if ("2".equals(type)) {
             conversationType = Conversation.ConversationType.GROUP;
         }
-        loaddingDialog = new LoaddingDialog(getActivity());
         initView(view);
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         return view;
@@ -94,7 +93,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
                     public void run() {
                         // view.clearResult();
                         check_paypwd(result);
-                        loaddingDialog.show();
+                        LoadDialog.show(getActivity());
                     }
                 }, 500);
 
@@ -123,7 +122,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
                         }
 
                     } else {
-                        loaddingDialog.dismiss();
+                        LoadDialog.dismiss(getActivity());
                         psw_input.clearResult();
                         ToastUtil.showS(getActivity(), obj.optString("msg"));
                     }
@@ -158,7 +157,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
                 Log.d("TAG7848", response);
                 Log.d("TAG800", UtilPreference.getStringValue(getActivity(), "rongcloud_id"));
                 try {
@@ -196,7 +195,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
         });
     }
@@ -212,7 +211,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -249,7 +248,7 @@ public class RedFragment extends DialogFragment implements View.OnClickListener 
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
         });
     }

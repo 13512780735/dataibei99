@@ -16,6 +16,7 @@ import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.configs.CoinTypes;
 import com.likeit.currenciesapp.configs.OperateTypes;
 import com.likeit.currenciesapp.ui.Greenteahy.DianSellResultActivity;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.fragment.HomeFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
@@ -56,7 +57,6 @@ public class AddBankActivity extends AppCompatActivity {
     TextView tv_apply;
     private String keys;
     private String type = "0";
-    private LoaddingDialog loaddingDialog;
     String bankAccount, bankName, bankBankName, bankBankCity, bankBankZH;
     private String banksId;
     private String ukey;
@@ -83,6 +83,7 @@ public class AddBankActivity extends AppCompatActivity {
     private String type01;
     private Bundle bundel;
     private String id;
+    private AddBankActivity mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class AddBankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_bank);
         MyActivityManager.getInstance().addActivity(this);
         ButterKnife.bind(this);
+        mContext=this;
         keys = getIntent().getExtras().getString("keys");
         type = getIntent().getExtras().getString("type");
         flag = getIntent().getExtras().getString("flag");
@@ -133,7 +135,6 @@ public class AddBankActivity extends AppCompatActivity {
             banksId = getIntent().getExtras().getString("banksId");
             id=getIntent().getExtras().getString("id");
         }
-        loaddingDialog = new LoaddingDialog(this);
         initView();
     }
 
@@ -260,7 +261,7 @@ public class AddBankActivity extends AppCompatActivity {
 
     private void del() {
         Log.d("TAG2222",bankflag);
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EEL_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -268,7 +269,7 @@ public class AddBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -298,7 +299,7 @@ public class AddBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -307,7 +308,7 @@ public class AddBankActivity extends AppCompatActivity {
      * 编辑银行
      */
     private void editBank() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EDIT_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -321,7 +322,7 @@ public class AddBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -352,7 +353,7 @@ public class AddBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -371,7 +372,7 @@ public class AddBankActivity extends AppCompatActivity {
         if (StringUtil.isBlank(bankAccount) || StringUtil.isBlank(bankName) || StringUtil.isBlank(bankBankName) || StringUtil.isBlank(bankBankCity) || StringUtil.isBlank(bankBankZH)) {
             ToastUtil.showS(AddBankActivity.this, "请完善资料");
         }
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_ADD_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -384,7 +385,7 @@ public class AddBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -425,7 +426,7 @@ public class AddBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
 

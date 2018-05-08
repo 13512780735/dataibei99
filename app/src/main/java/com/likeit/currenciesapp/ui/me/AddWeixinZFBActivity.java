@@ -12,6 +12,7 @@ import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.configs.CoinTypes;
 import com.likeit.currenciesapp.configs.OperateTypes;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.fragment.HomeFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
@@ -47,7 +48,6 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
     String bankAccount, bankName, bankBankName, bankBankCity, bankBankZH;
     private String banksId;
     private String ukey;
-    private LoaddingDialog loaddingDialog;
     private String flag="1";
     private String bankflag="1";
     protected String orderId = "0";
@@ -70,12 +70,14 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
     private String type01;
     private Bundle bundel;
     private String id;
+    private AddWeixinZFBActivity mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_weixin_zfb);
         ButterKnife.bind(this);
+        mContext=this;
         keys = getIntent().getExtras().getString("keys");
         type = getIntent().getExtras().getString("type");
         flag = getIntent().getExtras().getString("flag");
@@ -119,7 +121,6 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
             banksId = getIntent().getExtras().getString("banksId");
             id=getIntent().getExtras().getString("id");
     }
-        loaddingDialog = new LoaddingDialog(this);
         initView();
     }
 
@@ -201,7 +202,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
 
     }
     private void del() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EEL_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -209,7 +210,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -239,7 +240,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -248,7 +249,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
      * 编辑银行
      */
     private void editBank() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EDIT_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -262,7 +263,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -303,7 +304,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -318,7 +319,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
         if (StringUtil.isBlank(bankAccount) || StringUtil.isBlank(bankName) ) {
             ToastUtil.showS(AddWeixinZFBActivity.this, "请完善资料");
         }
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_ADD_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -331,7 +332,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -361,7 +362,7 @@ public class AddWeixinZFBActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
 

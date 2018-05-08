@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.ui.base.Container;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.loopj.android.http.RequestParams;
@@ -34,7 +35,6 @@ public class ForgetPwd02Activity extends Container {
     @BindView(R.id.login_et_new_pwd)
     EditText etPwd;
 
-    private LoaddingDialog loadingDialog;
     private int time_tatol = 60;
     private final static int TIME = 101;
 
@@ -64,7 +64,6 @@ public class ForgetPwd02Activity extends Container {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_pwd2);
         ButterKnife.bind(this);
-        loadingDialog = new LoaddingDialog(this);
         initView();
     }
 
@@ -93,7 +92,7 @@ public class ForgetPwd02Activity extends Container {
                     showToast("密碼长度不正确");
                     return;
                 }
-                loadingDialog.show();
+                LoadDialog.show(mContext);
                 String url = AppConfig.LIKEIT_FORGET_PAYPWD;
                 RequestParams params = new RequestParams();
                 params.put("ukey", ukey);
@@ -137,7 +136,7 @@ public class ForgetPwd02Activity extends Container {
 //            ToastUtil.showS(mContext, "請輸入正確的手機號");
 //            return;
 //        }
-        loadingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_SEND_SMS;
         RequestParams params = new RequestParams();
         params.put("mobile", phoneNum);
@@ -145,7 +144,7 @@ public class ForgetPwd02Activity extends Container {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-               loadingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 // Log.d("TAG", response);
                 try {
                     JSONObject object = new JSONObject(response);

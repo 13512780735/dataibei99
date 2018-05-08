@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.hwangjr.rxbus.RxBus;
 import com.likeit.currenciesapp.R;
-import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.MyActivityManager;
 import com.likeit.currenciesapp.utils.UtilPreference;
 import com.pk4pk.baseappmoudle.runtimepermissions.PermissionsManager;
@@ -31,7 +30,6 @@ public class BaseActivity extends AppCompatActivity {
     protected String getuicid = "";
     protected int page = 1;
 
-    public LoaddingDialog loaddingDialog;
     protected String ukey;
 
     @Override
@@ -42,7 +40,6 @@ public class BaseActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ukey = UtilPreference.getStringValue(this, "ukey");
         context = this;
-        loaddingDialog = new LoaddingDialog(context);
         RxBus.get().register(this);
         requestPermissions();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -64,19 +61,9 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         RxBus.get().unregister(this);
-        LoaddingDismiss();
     }
 
 
-    public void LoaddingShow() {
-        if (loaddingDialog == null) {
-            loaddingDialog = new LoaddingDialog(context);
-        }
-
-        if (!loaddingDialog.isShowing()) {
-            loaddingDialog.show();
-        }
-    }
 
 //    protected void Im_Logout() {
 //        RongIM.getInstance().disconnect();
@@ -98,11 +85,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void LoaddingDismiss() {
-        if (loaddingDialog != null && loaddingDialog.isShowing()) {
-            loaddingDialog.dismiss();
-        }
-    }
 
     protected void initTopBar(String title) {
         top_bar_back_img = (ImageView) findViewById(R.id.top_bar_back_img);

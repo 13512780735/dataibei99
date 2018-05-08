@@ -1,7 +1,6 @@
 package com.likeit.currenciesapp.ui.fragment;
 
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -23,9 +21,9 @@ import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.model.DianInfoEntity;
 import com.likeit.currenciesapp.model.GreenteahyInfoEntity;
 import com.likeit.currenciesapp.ui.Greenteahy.DianBuyInputRateActivity;
-import com.likeit.currenciesapp.ui.Greenteahy.DianSellInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.TransferAccountsActivity;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.home.WithdrawDialogFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.ToastUtil;
@@ -63,7 +61,6 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
     private PullToRefreshScrollView mPullToRefreshScrollView;
     private TextView tvWithdraw;
     private TextView tvBuy, tvTotalDian, tvAnnualRate, tvYesterDayAccrual, tvAddUpAccrual;
-    private ProgressDialog mDialog;
     private DianInfoEntity mDianInfoEntity;
     private TextView tv_rlGreenteahy_transfer;
     private int log_type;
@@ -138,22 +135,19 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
             @Override
             public void onFinish() {
                 super.onFinish();
-                mDialog.dismiss();
             }
         });
     }
 
     private void initData() {
-        mDialog = new ProgressDialog(getActivity());
-        mDialog.setTitle("Loading...");
-        mDialog.show();
+        LoadDialog.show(getActivity());
         String url = AppConfig.LIKEIT_GET_DIAN;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                mDialog.dismiss();
+             LoadDialog.dismiss(getActivity());
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -181,7 +175,7 @@ public class GreenteahyFragment extends BaseFragment implements RadioGroup.OnChe
             @Override
             public void onFinish() {
                 super.onFinish();
-                mDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
 
             }
         });

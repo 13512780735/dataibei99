@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -15,7 +16,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.likeit.currenciesapp.R;
+import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.app.MyApplication;
 import com.likeit.currenciesapp.ui.chat.SealAppContext;
 import com.likeit.currenciesapp.ui.chat.SealConst;
@@ -30,7 +33,14 @@ import com.likeit.currenciesapp.ui.chat.server.utils.NToast;
 import com.likeit.currenciesapp.ui.chat.server.widget.DialogWithYesOrNoUtils;
 import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.chat.server.widget.SelectableRoundedImageView;
+import com.likeit.currenciesapp.ui.chat.ui.PostScriptActivity;
+import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.StringUtil;
+import com.likeit.currenciesapp.utils.UtilPreference;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.rong.imageloader.core.ImageLoader;
 import io.rong.imlib.model.UserInfo;
@@ -51,13 +61,14 @@ public class SearchFriendActivity extends BaseActivity {
     private Friend mFriend;
     private String flag;
     private TextView tv_search;
+    private String uRongId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_friend);
         setTitle((R.string.search_friend));
-
+        uRongId= UtilPreference.getStringValue(mContext,"rongcloud_id");
         mEtSearch = (EditText) findViewById(R.id.search_edit);
         searchItem = (LinearLayout) findViewById(R.id.search_result);
         searchName = (TextView) findViewById(R.id.search_name);
@@ -124,11 +135,11 @@ public class SearchFriendActivity extends BaseActivity {
             case SEARCH_PHONE:
                 return action.getUserInfoFromPhone(flag, mPhone);
             case ADD_FRIEND:
+                //return action.sendFriendInvitation(mFriendId, addFriendMessage);
                 return action.sendFriendInvitation(mFriendId, addFriendMessage);
         }
         return super.doInBackground(requestCode, id);
     }
-
     @Override
     public void onSuccess(int requestCode, Object result) {
         if (result != null) {

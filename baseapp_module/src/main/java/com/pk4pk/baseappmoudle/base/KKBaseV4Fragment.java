@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 
-import com.pk4pk.baseappmoudle.dialog.LoaddingDialog;
 import com.pk4pk.baseappmoudle.utils.KKToast;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,7 +21,6 @@ import org.greenrobot.eventbus.EventBus;
 
 public abstract class KKBaseV4Fragment extends Fragment {
 
-    public LoaddingDialog loaddingDialog;
     public Context context;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +29,6 @@ public abstract class KKBaseV4Fragment extends Fragment {
             EventBus.getDefault().register(this);
         }
         context=getActivity();
-        loaddingDialog=new LoaddingDialog(context);
     }
 
     @Override
@@ -42,11 +39,11 @@ public abstract class KKBaseV4Fragment extends Fragment {
         }
     }
 
-    public void LoaddingDismiss(){
-        if(loaddingDialog!=null && loaddingDialog.isShowing()){
-            loaddingDialog.dismiss();
-        }
-    }
+//    public void LoaddingDismiss(){
+//        if(loaddingDialog!=null && loaddingDialog.isShowing()){
+//            loaddingDialog.dismiss();
+//        }
+//    }
 
     protected void toFinish() {
         getActivity().finish();

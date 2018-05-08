@@ -21,6 +21,7 @@ import com.likeit.currenciesapp.ui.Greenteahy.TransferDialog01Fragment;
 import com.likeit.currenciesapp.ui.Greenteahy.TransferDialog02Fragment;
 import com.likeit.currenciesapp.ui.MainActivity;
 import com.likeit.currenciesapp.ui.base.Container;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.StringUtil;
@@ -51,7 +52,6 @@ public class TransferActivity extends Container {
     TextView tv_account;
     @BindView(R.id.ed_input)
     EditText ed_input;
-    private LoaddingDialog loadingDialog;
     private String money;
     private DianInfoEntity mDianInfoEntity;
     private String balance;
@@ -71,9 +71,8 @@ public class TransferActivity extends Container {
 //        }
         tvHeader.setText("轉賬");
         targetId = getIntent().getStringExtra("targetId");
-        loadingDialog = new LoaddingDialog(this);
         initData();
-        loadingDialog.show();
+        LoadDialog.show(mContext);
         //initView();
     }
 
@@ -164,13 +163,13 @@ public class TransferActivity extends Container {
 
             @Override
             public void failed(Throwable e) {
-                loadingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
 
             @Override
             public void onFinish() {
                 super.onFinish();
-                loadingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
 
             }
         });

@@ -34,6 +34,7 @@ import com.likeit.currenciesapp.model.LoginUserInfoEntity;
 import com.likeit.currenciesapp.rxbus.RefreshEvent;
 import com.likeit.currenciesapp.ui.chat.SealUserInfoManager;
 import com.likeit.currenciesapp.ui.chat.server.SealAction;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.chat.ui.activity.NewFriendListActivity;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.MyActivityManager;
@@ -98,7 +99,6 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     private BadgeView badgeView;
     private String page;
     private MainActivity mContext;
-    private LoaddingDialog loaddingDialog;
 //SADASDASDASDASD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +106,6 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ButterKnife.bind(this);
-        loaddingDialog = new LoaddingDialog(this);
         RxBus.get().register(this);
         mContext = this;
         Intent intent = getIntent();
@@ -338,21 +337,21 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
                     // startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 } else {
                     if (!RongIM.getInstance().getCurrentConnectionStatus().equals(RongIMClient.ConnectionStatusListener.ConnectionStatus.CONNECTED)) {
-                        loaddingDialog.show();
+                        LoadDialog.show(mContext);
                         RongIM.connect(cacheToken, new RongIMClient.ConnectCallback() {
                             @Override
                             public void onTokenIncorrect() {
-                                loaddingDialog.dismiss();
+                                LoadDialog.dismiss(mContext);
                             }
 
                             @Override
                             public void onSuccess(String s) {
-                                loaddingDialog.dismiss();
+                                LoadDialog.dismiss(mContext);
                             }
 
                             @Override
                             public void onError(RongIMClient.ErrorCode e) {
-                                loaddingDialog.dismiss();
+                                LoadDialog.dismiss(mContext);
                             }
                         });
                     }

@@ -19,6 +19,7 @@ import com.likeit.currenciesapp.configs.OperateTypes;
 import com.likeit.currenciesapp.model.BankInfoEntity;
 import com.likeit.currenciesapp.ui.Greenteahy.DianSellResultActivity;
 import com.likeit.currenciesapp.ui.base.Container;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.fragment.HomeFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
@@ -44,7 +45,6 @@ public class BankcardActivity extends AppCompatActivity {
     TextView tvRight;
     @BindView(R.id.tv_myListview)
     ListView mListView;
-    private LoaddingDialog loaddingDialog;
     private List<BankInfoEntity> bankData;
     private BankListAdapter mAdapter;
     private String bankflag;
@@ -82,7 +82,6 @@ public class BankcardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bankcard);
         ButterKnife.bind(this);
         mContext = this;
-        loaddingDialog = new LoaddingDialog(this);
         bankData = new ArrayList<>();
         ukey = UtilPreference.getStringValue(this, "ukey");
         bankskey = UtilPreference.getStringValue(this, "bankskey");
@@ -125,14 +124,14 @@ public class BankcardActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_GET_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 Log.d("TAG999", "bank" + response);
                 try {
                     JSONObject object = new JSONObject(response);
@@ -173,13 +172,13 @@ public class BankcardActivity extends AppCompatActivity {
 
             @Override
             public void failed(Throwable e) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
 
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }

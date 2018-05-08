@@ -14,9 +14,9 @@ import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.configs.CoinTypes;
 import com.likeit.currenciesapp.configs.OperateTypes;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.ui.fragment.HomeFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
-import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.MyActivityManager;
 import com.likeit.currenciesapp.utils.StringUtil;
 import com.likeit.currenciesapp.utils.ToastUtil;
@@ -53,7 +53,6 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
 
     private String keys;
     private String type = "0";
-    private LoaddingDialog loaddingDialog;
     String bankAccount, bankName, bankBankName, bankcode, bankBankZH;
     private String banksId;
     private String ukey;
@@ -79,6 +78,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
     private String type01;
     private Bundle bundel;
     private String id;
+    private AddTaiwanBankActivity mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +86,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_taiwan_bank);
         MyActivityManager.getInstance().addActivity(this);
         ButterKnife.bind(this);
+        mContext=this;
         keys = getIntent().getExtras().getString("keys");
         type = getIntent().getExtras().getString("type");
         flag = getIntent().getExtras().getString("flag");
@@ -129,7 +130,6 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
             banksId = getIntent().getExtras().getString("banksId");
             id = getIntent().getExtras().getString("id");
         }
-        loaddingDialog = new LoaddingDialog(this);
         initView();
     }
 
@@ -235,7 +235,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
     }
 
     private void del() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EEL_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -243,7 +243,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -273,7 +273,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -282,7 +282,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
      * 编辑银行
      */
     private void editBank() {
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_EDIT_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -296,7 +296,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -337,7 +337,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
     }
@@ -356,7 +356,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
             ToastUtil.showS(AddTaiwanBankActivity.this, "请完善资料");
         }
         Log.d("TAG32",bankcode);
-        loaddingDialog.show();
+        LoadDialog.show(mContext);
         String url = AppConfig.LIKEIT_ADD_BANK;
         RequestParams params = new RequestParams();
         params.put("ukey", ukey);
@@ -369,7 +369,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -410,7 +410,7 @@ public class AddTaiwanBankActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(mContext);
             }
         });
 

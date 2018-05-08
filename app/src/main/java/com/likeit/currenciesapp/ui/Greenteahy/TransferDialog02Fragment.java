@@ -23,6 +23,7 @@ import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.app.MyApplication;
 import com.likeit.currenciesapp.model.TransferAccountInfoEntity;
 import com.likeit.currenciesapp.ui.MainActivity;
+import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.LoaddingDialog;
 import com.likeit.currenciesapp.utils.MyActivityManager;
@@ -49,7 +50,6 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
     private TextView tv_money;
     private String name;
     private PswInputView psw_input;
-    private LoaddingDialog loaddingDialog;
     private String flag;
     private String targetId;
 
@@ -66,7 +66,6 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
         money = bundle.getString("money");
         targetId = bundle.getString("targetId");
         name = bundle.getString("name");
-        loaddingDialog = new LoaddingDialog(getActivity());
         initView(view);
         getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         // showKeyboard();
@@ -98,7 +97,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
                     public void run() {
                         // view.clearResult();
                         check_paypwd(result);
-                        loaddingDialog.show();
+                        LoadDialog.show(getActivity());
                     }
                 }, 500);
 
@@ -126,7 +125,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
                     if ("true".equals(status)) {
                         refer(result);
                     } else {
-                        loaddingDialog.dismiss();
+                        LoadDialog.dismiss(getActivity());
                         psw_input.clearResult();
                         ToastUtil.showS(getActivity(), obj.optString("msg"));
                     }
@@ -159,7 +158,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -192,7 +191,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
         });
     }
@@ -209,7 +208,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
                 try {
                     JSONObject obj = new JSONObject(response);
                     String status = obj.optString("status");
@@ -236,7 +235,7 @@ public class TransferDialog02Fragment extends DialogFragment implements View.OnC
             @Override
             public void onFinish() {
                 super.onFinish();
-                loaddingDialog.dismiss();
+                LoadDialog.dismiss(getActivity());
             }
         });
     }

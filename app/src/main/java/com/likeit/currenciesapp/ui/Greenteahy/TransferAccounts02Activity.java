@@ -37,7 +37,6 @@ public class TransferAccounts02Activity extends Container {
     EditText ed_input;
 
     TransferAccountInfoEntity transferAccountInfoEntity;
-    private LoaddingDialog loadingDialog;
     private DianInfoEntity dianInfoEntity;
     private String balance;
     private String money;
@@ -53,7 +52,6 @@ public class TransferAccounts02Activity extends Container {
         transferAccountInfoEntity = (TransferAccountInfoEntity) getIntent().getExtras().getSerializable("transferAccountInfoEntity");
         setContentView(R.layout.activity_transfer_accounts02);
         ButterKnife.bind(this);
-        loadingDialog = new LoaddingDialog(this);
         initView();
     }
 
