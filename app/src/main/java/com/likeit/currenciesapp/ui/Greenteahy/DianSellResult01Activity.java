@@ -385,7 +385,7 @@ public class DianSellResult01Activity extends Container {
                         alipay_name_tv.setText("姓名:" + df_tel);
                         ll_input_alipay_passwd_et.setVisibility(View.GONE);
                         //inputAlipayPasswdEt.setHint("請輸入淘寶密碼,不提供密碼請輸入0");
-                        inputAlipayAccountEt.setHint("請輸入淘寶賬號");
+                        inputAlipayAccountEt.setHint("請輸入手機號碼");
                         initPayInfo();
                         break;
                     case R.id.btn_wechat:

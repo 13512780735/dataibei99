@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:background="@drawable/dialog_bg_a"
         android:orientation="vertical">
 
@@ -46,9 +46,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_normal"
+                android:padding="8dp"
                 android:text="提領到"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,17 +56,16 @@
                 android:layout_toRightOf="@+id/tv_daluBank"
                 android:gravity="center_vertical"
                 android:hint="支付寶、淘寶代付、微信、大陸銀行"
-            android:paddingRight="@dimen/padding_normal"
-            android:paddingTop="@dimen/padding_normal"
-            android:paddingBottom="@dimen/padding_normal"
-                android:textSize="11sp" />
+                android:paddingBottom="@dimen/padding_normal"
+                android:paddingRight="@dimen/padding_normal"
+                android:paddingTop="@dimen/padding_normal"
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dip"
                 android:layout_weight="1"
                 android:background="@mipmap/icon_right"
                 android:gravity="center_vertical"
@@ -91,9 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:padding="@dimen/padding_normal"
+                android:padding="8dp"
                 android:text="提現到"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,19 +100,17 @@
                 android:layout_toRightOf="@+id/tv_taiwanBank"
                 android:gravity="center_vertical"
                 android:hint="台灣銀行或大陸銀行"
+                android:paddingBottom="@dimen/padding_normal"
                 android:paddingRight="@dimen/padding_normal"
                 android:paddingTop="@dimen/padding_normal"
-                android:paddingBottom="@dimen/padding_normal"
-                android:textSize="11sp" />
+                android:textSize="14sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="5dip"
                 android:layout_weight="1"
-
                 android:background="@mipmap/icon_right"
                 android:gravity="center_vertical"
                 android:textColor="@color/white" />

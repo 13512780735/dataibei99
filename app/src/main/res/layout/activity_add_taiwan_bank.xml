@@ -71,7 +71,7 @@
                 android:layout_weight="5"
                 android:background="@null"
                 android:hint="@string/bank_name17"
-                android:textColor="@color/gray7"
+                android:textColorHint="@color/gray7"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -101,7 +101,7 @@
                 android:layout_weight="5"
                 android:background="@null"
                 android:hint="@string/bank_name23"
-                android:textColor="@color/gray7"
+                android:textColorHint="@color/gray7"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -132,7 +132,7 @@
                 android:background="@null"
                 android:hint="@string/me_name28"
                 android:inputType="number"
-                android:textColor="@color/gray7"
+                android:textColorHint="@color/gray7"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -162,7 +162,7 @@
                 android:layout_weight="5"
                 android:background="@null"
                 android:hint="@string/bank_name6"
-                android:textColor="@color/gray7"
+                android:textColorHint="@color/gray7"
                 android:textSize="14sp" />
         </LinearLayout>
 

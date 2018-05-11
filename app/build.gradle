@@ -10,8 +10,8 @@ android {
 //        versionCode 38
 //        versionName "5.8"
         //转转宝
-        versionCode 45
-        versionName "2.0.3"
+        versionCode 46
+        versionName "2.0.4"
 //        versionCode 46
 //        versionName "6.1"
         multiDexEnabled true
