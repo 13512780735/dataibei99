@@ -75,7 +75,7 @@ public class DianBuyInputRateActivity extends Container {
 
 
     private void initView() {
-        tvHeader.setText("點數計息");
+        tvHeader.setText("賺賺寶");
         nowRateTv.setText(rmb_buy_rate + "");
         yearRateTv.setText(dianInfoEntity.getNian());
 

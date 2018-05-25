@@ -7,7 +7,7 @@
     tools:context="com.likeit.currenciesapp.ui.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-   <include layout="@layout/layout_header_with_back_img"></include>
+   <include layout="@layout/layout_header_with_back_img02"></include>
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         android:id="@+id/ll_home_scrollview"
         android:layout_width="match_parent"

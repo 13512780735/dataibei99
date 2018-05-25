@@ -10,8 +10,8 @@ android {
 //        versionCode 38
 //        versionName "5.8"
         //转转宝
-        versionCode 46
-        versionName "2.0.4"
+        versionCode 47
+        versionName "2.0.5"
 //        versionCode 46
 //        versionName "6.1"
         multiDexEnabled true
@@ -140,5 +140,6 @@ dependencies {
     compile 'cjt.library.wheel:camera:0.1.9'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
 }
 repositories { flatDir { dirs 'aars' } }

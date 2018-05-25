@@ -252,10 +252,10 @@ public class DianBuyResultActivity extends Container {
     }
 
     private void initView() {
-        tvHeader.setText("點數計息");
+        tvHeader.setText("賺賺寶");
         tx11.setText("買進幣別:" + "人民幣");
         tx12.setText("支付幣別:台幣");
-        tx13.setText("類型:點數計息");
+        tx13.setText("類型:賺賺寶");
         tx21.setText("金額:" + inputValue);
         tx22.setText("比數:" + nowRate);
         tx23.setText("兌換率:" + "1=" + (long) nowBl);

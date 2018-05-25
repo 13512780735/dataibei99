@@ -30,23 +30,23 @@
         android:maxLength="8"
         android:textColor="@android:color/white"
         android:textSize="@dimen/text_size_xhdpi" />
-    <!--  <TextView
+      <TextView
           android:id="@+id/tv_header_right"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_alignParentRight="true"
           android:layout_centerVertical="true"
           android:textColor="@color/white"
-          android:textSize="16sp"
+          android:textSize="15sp"
           android:padding="10dp"
-          android:text="訂單查詢"/>-->
-    <ImageView
-        android:id="@+id/iv_header_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:padding="10dip" />
+          android:text="訂單查詢"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_header_right"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:padding="10dip" />-->
 
 </RelativeLayout>

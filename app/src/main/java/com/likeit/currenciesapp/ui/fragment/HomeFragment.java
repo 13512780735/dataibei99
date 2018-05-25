@@ -1,11 +1,13 @@
 package com.likeit.currenciesapp.ui.fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,8 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.holder.Holder;
+import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
@@ -26,6 +33,7 @@ import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.app.MyApplication;
 import com.likeit.currenciesapp.configs.CoinTypes;
 import com.likeit.currenciesapp.configs.OperateTypes;
+import com.likeit.currenciesapp.model.AdsModel;
 import com.likeit.currenciesapp.model.CurrencyBean;
 import com.likeit.currenciesapp.model.DianInfoEntity;
 import com.likeit.currenciesapp.model.GreenteahyInfoEntity;
@@ -53,6 +61,7 @@ import com.likeit.currenciesapp.utils.UtilPreference;
 import com.likeit.currenciesapp.views.CircleImageView;
 import com.likeit.currenciesapp.views.NoScrollViewPager;
 import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -65,11 +74,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2<ScrollView>, View.OnClickListener {
+public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRefreshListener2<ScrollView>, View.OnClickListener, OnItemClickListener {
 
 
     private ImageView ivLeft;
-    private ImageView ivRight;
+    private TextView ivRight;
     private TextView tvHeader;
     private SliderLayout sliderShow;
     private TextView tvNotice;
@@ -154,9 +163,11 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private RelativeLayout rl_income, rl_expend;
     private TextView tv_income, tv_income01, tv_income02, tv_income03, tv_expend, tv_expend01, tv_expend02, tv_expend03;
     private List<HomeInfoEntity.AdsBean> imgId;
-    private SliderLayout sliderLayout;
-    private DefaultSliderView textSliderView;
+    //    private SliderLayout sliderLayout;
+//    private DefaultSliderView textSliderView;
     private String work;
+    private ConvenientBanner mBanner;
+    private ImageView image_lv;
 
 
     @Override
@@ -169,8 +180,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         imgId = new ArrayList();
         dataList = new ArrayList<GreenteahyInfoEntity>();//收入
         dataList01 = new ArrayList<GreenteahyInfoEntity>();//支出
-        sliderShow = findViewById(R.id.slider);//Logo banner
-        work=UtilPreference.getStringValue(getActivity(),"work");
+        //sliderShow = findViewById(R.id.slider);//Logo banner
+        mBanner = (ConvenientBanner) findViewById(R.id.banner);
+        work = UtilPreference.getStringValue(getActivity(), "work");
         initView();
         LoadDialog.show(getActivity());
         // inithomeData();//首页数据
@@ -204,7 +216,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         HttpUtil.post(url, params, new HttpUtil.RequestListener() {
             @Override
             public void success(String response) {
-               LoadDialog.dismiss(getActivity());
+                LoadDialog.dismiss(getActivity());
                 Log.d("TAG", response);
                 try {
                     JSONObject object = new JSONObject(response);
@@ -383,7 +395,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                         mHomeInfoEntity = JSON.parseObject(obj.optString("info"), HomeInfoEntity.class);
                         imgId = mHomeInfoEntity.getAds();
                         tvNotice.setText(mHomeInfoEntity.getPmd());
-                        imageSlider();
+                        //imageSlider();
+                        initBanner();
                         //人民币
                         for (int i = 0; i < mHomeInfoEntity.getBarray().size(); i++) {
                             name = mHomeInfoEntity.getBarray().get(i).getName();
@@ -430,6 +443,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         });
     }
 
+
     private void initData() {
         String url = AppConfig.LIKEIT_HUILV;
         RequestParams params = new RequestParams();
@@ -475,68 +489,64 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         });
     }
 
-    private void imageSlider() {
+    List<AdsModel> AdList = new ArrayList<>();
+
+    // private List<String> networkImage = new ArrayList<>();
+    private void initBanner() {
         for (int i = 0; i < mHomeInfoEntity.getAds().size(); i++) {
-            DefaultSliderView defaultSliderView = new DefaultSliderView(getActivity());
-            // textSliderView.description("");//设置标题
-            defaultSliderView.image(AppConfig.LIKEIT_LOGO1 + mHomeInfoEntity.getAds().get(i).getImg());//设置图片的网络地址
-            final int finalI = i;
-            defaultSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                @Override
-                public void onSliderClick(BaseSliderView slider) {
-                    //广告点击事件
-//                    String adlUrl = adData.get(finalI).getUrl();
-//                    Intent intent = new Intent(getActivity(), WebADLActivity.class);
-//                    intent.putExtra("adlUrl", adlUrl);
-//                    startActivity(intent);
-                }
-            });
-            //添加到布局中显示
-            sliderShow.addSlider(defaultSliderView);
-
+            AdsModel adsModel = new AdsModel();
+            adsModel.setId(mHomeInfoEntity.getAds().get(i).getId());
+            adsModel.setUrl(mHomeInfoEntity.getAds().get(i).getUrl());
+            adsModel.setCntitle(mHomeInfoEntity.getAds().get(i).getCntitle());
+            adsModel.setImg(AppConfig.LIKEIT_LOGO1 + mHomeInfoEntity.getAds().get(i).getImg());
+            AdList.add(adsModel);
         }
-        //其他设置
-        sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);//使用默认指示器，在底部显示
-        sliderShow.setDuration(5000);//停留时间
-        //sliderShow.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        sliderShow.setPresetTransformer(SliderLayout.Transformer.Default);
-        sliderShow.addOnPageChangeListener(new ViewPagerEx.OnPageChangeListener() {
+        Log.e("TAG1212", AdList.get(0).toString());
+        //  networkImage=AdList;
+        mBanner.startTurning(3000);
+        mBanner.setPages(new CBViewHolderCreator<NetWorkImageHolderView>() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+            public NetWorkImageHolderView createHolder() {
+                return new NetWorkImageHolderView();
             }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        sliderShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
+        }, AdList)
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
+                .setPageIndicator(new int[]{R.drawable.indicator_gray, R.drawable.indicator_red})
+                .setOnItemClickListener(this)
+                .setScrollDuration(1500);
     }
-//
-//    @Override
-//    public void onStop() {
-//        super.onStop();
-//        sliderLayout.stopAutoCycle();
-//    }
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(getActivity(), "Banner:" + position, Toast.LENGTH_SHORT).show();
+    }
+
+    public class NetWorkImageHolderView implements Holder<AdsModel> {
+
+        private ImageView imageView;
+
+        @Override
+        public View createView(Context context) {
+            image_lv = new ImageView(context);
+            image_lv.setScaleType(ImageView.ScaleType.FIT_XY);
+
+            return image_lv;
+        }
+
+        @Override
+        public void UpdateUI(Context context, int position, AdsModel data) {
+            //Glide.with(getActivity()).load(data).into(imageView);
+            io.rong.imageloader.core.ImageLoader.getInstance().displayImage(data.getImg(), image_lv, MyApplication.getOptions());
+        }
+    }
+
 
     TextView tv_name, tv_dianshu;
 
     private void initView() {
         tv_nian = findViewById(R.id.tv_nianlv);
         ivLeft = findViewById(R.id.iv_header_left);
-        ivRight = findViewById(R.id.iv_header_right);
+        ivRight = findViewById(R.id.tv_header_right);
         tvHeader = findViewById(R.id.tv_header);
         user_Avatar = findViewById(R.id.user_Avatar);
         tv_name = findViewById(R.id.tv_name);
@@ -590,8 +600,9 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         tvNotice.setSelected(true);
         tvHeader.setText(this.getResources().getString(R.string.app_name));
         ivLeft.setImageResource(R.mipmap.nav_news);
-        ivRight.setImageResource(R.mipmap.nav_indent);
+        // ivRight.setImageResource(R.mipmap.nav_indent);
         initListener();
+        ivRight.setText("訂單查詢");
         //   pmd=object.optString("pmd");
 
     }
@@ -647,40 +658,42 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
              * 卖出
              */
             case R.id.tv_sale:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else{
-                bundle = new Bundle();
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.SELL);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(SellActivity.class, bundle);}
+                } else {
+                    bundle = new Bundle();
+                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.SELL);
+                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+                    bundle.putString(HomeFragment.COIN_ID, "2");
+                    toActivity(SellActivity.class, bundle);
+                }
                 break;
             /**
              * 买进
              */
             case R.id.tv_buy_in:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else{
-                bundle = new Bundle();
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(BuyInActivity.class, bundle);}
+                } else {
+                    bundle = new Bundle();
+                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
+                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+                    bundle.putString(HomeFragment.COIN_ID, "2");
+                    toActivity(BuyInActivity.class, bundle);
+                }
                 break;
             /**
              * 支付宝充值
              */
             case R.id.tv_alipay:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else {
+                } else {
                     bundle = new Bundle();
                     bundle.putSerializable("Dian", mDianInfoEntity);
                     bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
@@ -699,48 +712,51 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
              * 代付
              */
             case R.id.tv_negotiation:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else{
-                bundle = new Bundle();
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.OTHER);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(NegotiationActivity.class, bundle);}
+                } else {
+                    bundle = new Bundle();
+                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.OTHER);
+                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+                    bundle.putString(HomeFragment.COIN_ID, "2");
+                    toActivity(NegotiationActivity.class, bundle);
+                }
                 break;
             /**
              * 预购
              */
             case R.id.tv_Pre_order:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else{
-                bundle = new Bundle();
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.PRE);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                toActivity(PreOrderActivity.class, bundle);}
+                } else {
+                    bundle = new Bundle();
+                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.PRE);
+                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+                    bundle.putString(HomeFragment.COIN_ID, "2");
+                    toActivity(PreOrderActivity.class, bundle);
+                }
                 break;
             /**
              * 提领
              */
             case R.id.tv_Withdraw:
-                if("0".equals(work)){
+                if ("0".equals(work)) {
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
-                }else{
-                bundle = new Bundle();
-                bundle.putSerializable("Dian", mDianInfoEntity);
-                //  toActivity(DianSellInputRateActivity.class, bundle);
-                WithdrawDialogFragment dialogFragment = new WithdrawDialogFragment();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getFragmentManager(), "dialogFragment");}
+                } else {
+                    bundle = new Bundle();
+                    bundle.putSerializable("Dian", mDianInfoEntity);
+                    //  toActivity(DianSellInputRateActivity.class, bundle);
+                    WithdrawDialogFragment dialogFragment = new WithdrawDialogFragment();
+                    dialogFragment.setArguments(bundle);
+                    dialogFragment.show(getFragmentManager(), "dialogFragment");
+                }
                 break;
-            case R.id.iv_header_right://个人中心
+            case R.id.tv_header_right://个人中心
 //                 mViewPage = (NoScrollViewPager) getActivity().findViewById(R.id.home_viewpager);
 //                mViewPage.setCurrentItem(3);
                 toActivity(OrderListActivity.class);

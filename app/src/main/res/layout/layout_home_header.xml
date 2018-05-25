@@ -5,16 +5,23 @@
     android:background="@color/bgcolor"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_main_home_logo"
-        android:layout_width="match_parent"
-        android:layout_height="180dip">
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/rl_main_home_logo"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180dip">-->
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="180dip" />
-    </RelativeLayout>
+    <!--<com.daimajia.slider.library.SliderLayout-->
+    <!--android:id="@+id/slider"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180dip" />-->
+    <!--</RelativeLayout>-->
+    <com.bigkoo.convenientbanner.ConvenientBanner xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:gravity="center_horizontal"
+        app:canLoop="true" />
 
     <LinearLayout
         android:id="@+id/notice_msg_layout"
@@ -106,8 +113,7 @@
                 android:layout_centerVertical="true"
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/padding_normal"
-                android:paddingRight="@dimen/padding_normal"
-                >
+                android:paddingRight="@dimen/padding_normal">
 
                 <com.likeit.currenciesapp.views.CircleImageView
                     android:id="@+id/user_Avatar"
@@ -321,9 +327,9 @@
                     android:paddingLeft="3dip"
                     android:paddingRight="3dip"
                     android:paddingTop="8dip"
-                    android:textSize="11sp"
                     android:text="@string/greenteahy_name11"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tv_Withdraw_"
