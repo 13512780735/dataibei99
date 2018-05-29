@@ -194,8 +194,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         initExpend();
         String ukey = UtilPreference.getStringValue(getActivity(), "ukey");
         LoginUserInfoEntity mLoginUserInfoEntity = (LoginUserInfoEntity) getActivity().getIntent().getSerializableExtra("userInfo");
-        Log.d("TAG", "ukey-->" + ukey);
-        Log.d("TAG", "mLoginUserInfoEntity-->" + mLoginUserInfoEntity);
+//        Log.d("TAG", "ukey-->" + ukey);
+//        Log.d("TAG", "mLoginUserInfoEntity-->" + mLoginUserInfoEntity);
         mHandler.post(runnable);
 
     }
@@ -400,11 +400,11 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                         //人民币
                         for (int i = 0; i < mHomeInfoEntity.getBarray().size(); i++) {
                             name = mHomeInfoEntity.getBarray().get(i).getName();
-                            Log.d("TAG333", name + "");
+                          //  Log.d("TAG333", name + "");
                             if ("人民币".equals(name)) {
                                 is_kaipan = mHomeInfoEntity.getBarray().get(i).isIs_kaipan();
-                                Log.d("TAG", is_kaipan + "");
-                                Log.d("TAG1", name + "");
+//                                Log.d("TAG", is_kaipan + "");
+//                                Log.d("TAG1", name + "");
                                 if (!is_kaipan) {
                                     tvSale.setEnabled(false);
                                     tvBuyIn.setEnabled(false);
@@ -422,7 +422,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                                 }
                             }
                         }
-                        Log.d("TAG", mHomeInfoEntity.toString());
+                      //  Log.d("TAG", mHomeInfoEntity.toString());
                     } else {
                         ToastUtil.showS(getActivity(), msg);
                     }
@@ -501,7 +501,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             adsModel.setImg(AppConfig.LIKEIT_LOGO1 + mHomeInfoEntity.getAds().get(i).getImg());
             AdList.add(adsModel);
         }
-        Log.e("TAG1212", AdList.get(0).toString());
+      //  Log.e("TAG1212", AdList.get(0).toString());
         //  networkImage=AdList;
         mBanner.startTurning(3000);
         mBanner.setPages(new CBViewHolderCreator<NetWorkImageHolderView>() {

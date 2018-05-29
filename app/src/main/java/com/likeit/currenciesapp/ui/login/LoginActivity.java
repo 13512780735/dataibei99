@@ -298,7 +298,7 @@ public class LoginActivity extends BaseActivity {
                         request(LOGIN, true);
                     } else {
                         LoadDialog.dismiss(mContext);
-                        showToast(msg);
+                     showToast(msg);
                     }
                     //toActivityFinish(MainActivity.class);
                 } catch (JSONException e) {

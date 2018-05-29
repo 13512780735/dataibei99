@@ -20,7 +20,7 @@
             android:id="@+id/type_operate_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="提領幣別:"
+            android:text="可用點數"
             android:textColor="@color/rate_input_txt_color"
             android:textSize="@dimen/rate_input_txt_size"/>
 
