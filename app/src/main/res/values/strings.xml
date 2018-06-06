@@ -52,7 +52,7 @@
     <!--首页-->
     <string name="home_name01">轉轉寳</string>
     <string name="home_name02">★本站嚴正聲明：本站所提供一切資訊只供會員參考之用，若有不法交易觸犯當地法令事宜，概與本站無關。</string>
-    <string name="home_name03">人民幣比數</string>
+    <string name="home_name03">轉轉豆比數</string>
     <string name="home_name04">更多比數兌換</string>
     <string name="home_name05">賣出</string>
     <string name="home_name06">買進</string>
@@ -110,7 +110,7 @@
     <string name="currency_name28">充值</string>
 
     <!--外汇兑换-->
-    <string name="exchange_name01">外匯兌換</string>
+    <string name="exchange_name01">轉轉豆兌換</string>
     <string name="exchange_name02">人民幣</string>
     <string name="exchange_name03">美元</string>
     <string name="exchange_name04">韓元</string>
