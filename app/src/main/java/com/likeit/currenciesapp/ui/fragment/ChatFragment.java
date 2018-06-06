@@ -2,8 +2,11 @@ package com.likeit.currenciesapp.ui.fragment;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.model.LoginUserInfoEntity;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
+import com.likeit.currenciesapp.ui.chat.SealAppContext;
 import com.likeit.currenciesapp.ui.chat.SealUserInfoManager;
 import com.likeit.currenciesapp.ui.chat.ui.ContactActivity;
 import com.likeit.currenciesapp.ui.chat.ui.KeFuListActivity;
@@ -21,8 +25,11 @@ import com.likeit.currenciesapp.ui.chat.ui.fragment.ConversationListAdapterEx;
 import com.likeit.currenciesapp.ui.chat.ui.widget.MorePopWindow;
 
 import io.rong.imkit.RongContext;
+import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +51,7 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
     private boolean isDebug;
     private Context mContext;
     private Conversation.ConversationType[] mConversationsTypes = null;
+    private SharedPreferences sp;
 
     @Override
     protected int setContentView() {
@@ -52,6 +60,13 @@ public class ChatFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected void lazyLoad() {
+        sp = getActivity().getSharedPreferences("config", MODE_PRIVATE);
+        SharedPreferences sp = getActivity().getSharedPreferences("config", MODE_PRIVATE);
+        String cacheToken = sp.getString("loginToken", "");
+        Log.d("TAG", cacheToken);
+        if (!TextUtils.isEmpty(cacheToken)) {
+            RongIM.connect(cacheToken, SealAppContext.getInstance().getConnectCallback());
+        }
         mLoginUserInfoEntity = (LoginUserInfoEntity) getActivity().getIntent().getSerializableExtra("userInfo");
         initData();
         initView();

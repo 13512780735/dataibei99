@@ -328,7 +328,7 @@ public class MeFragment extends BaseFragment implements PullToRefreshBase.OnRefr
             public void onClick(View v) {
                 mPopupWindow.dismiss();
                 autoObtainCameraPermission();
-            }
+        }
         });
 
         mbuttonChoicecannce.setOnClickListener(new View.OnClickListener() {

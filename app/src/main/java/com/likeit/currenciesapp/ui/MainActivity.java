@@ -32,6 +32,7 @@ import com.likeit.currenciesapp.adapter.HomeViewPagerAdapter;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.model.LoginUserInfoEntity;
 import com.likeit.currenciesapp.rxbus.RefreshEvent;
+import com.likeit.currenciesapp.ui.chat.SealAppContext;
 import com.likeit.currenciesapp.ui.chat.SealUserInfoManager;
 import com.likeit.currenciesapp.ui.chat.server.SealAction;
 import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
@@ -99,7 +100,8 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     private BadgeView badgeView;
     private String page;
     private MainActivity mContext;
-//SADASDASDASDASD
+
+    //SADASDASDASDASD
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,14 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
         ButterKnife.bind(this);
         RxBus.get().register(this);
         mContext = this;
+
+        sp = getSharedPreferences("config", MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("config", MODE_PRIVATE);
+        String cacheToken = sp.getString("loginToken", "");
+        Log.d("TAG", cacheToken);
+        if (!TextUtils.isEmpty(cacheToken)) {
+            RongIM.connect(cacheToken, SealAppContext.getInstance().getConnectCallback());
+        }
         Intent intent = getIntent();
         sp = getSharedPreferences("config", MODE_PRIVATE);
         page = intent.getStringExtra("page");
@@ -322,7 +332,6 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
     }
 
 
-
     /**
      * 得到不落地 push 消息
      */
@@ -419,7 +428,7 @@ public class MainActivity extends FragmentActivity implements ViewPager.OnPageCh
 
                 firstTime = System.currentTimeMillis();
             } else {
-              // RongIM.getInstance().disconnect();
+                // RongIM.getInstance().disconnect();
                 // MyActivityManager.getInstance().appExit(this);
                 moveTaskToBack(false);
             }

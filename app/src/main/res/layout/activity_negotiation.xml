@@ -36,7 +36,7 @@
                     android:id="@+id/type_operate_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="代付點數:"
+                    android:text="代付點數"
                     android:textColor="@color/rate_input_txt_color"
                     android:textSize="@dimen/rate_input_txt_size" />
 
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="1"
-                    android:text="@string/currency_name07"
+                    android:text=""
                     android:textColor="@color/rate_input_txt_color"
                     android:textSize="@dimen/rate_input_txt_size" />
 
