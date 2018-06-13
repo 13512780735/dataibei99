@@ -20,7 +20,7 @@
             android:id="@+id/type_operate_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="賣出幣別:"
+            android:text="賣進幣別:"
             android:textColor="@color/rate_input_txt_color"
             android:textSize="@dimen/rate_input_txt_size"/>
 
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:text="人民幣"
+            android:text="點數"
             android:textColor="@color/rate_input_txt_color"
             android:textSize="@dimen/rate_input_txt_size"/>
 

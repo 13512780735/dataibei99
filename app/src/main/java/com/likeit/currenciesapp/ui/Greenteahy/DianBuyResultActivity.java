@@ -253,7 +253,7 @@ public class DianBuyResultActivity extends Container {
 
     private void initView() {
         tvHeader.setText("賺賺寶");
-        tx11.setText("買進幣別:" + "人民幣");
+        tx11.setText("買進幣別:" + "點數");
         tx12.setText("支付幣別:台幣");
         tx13.setText("類型:賺賺寶");
         tx21.setText("金額:" + inputValue);
@@ -277,11 +277,11 @@ public class DianBuyResultActivity extends Container {
                 zhi = inputBankZhiEt.getText().toString().trim();
                 city = inputBankCityEt.getText().toString().trim();
 
-                if (TextUtils.isEmpty(bankType) || TextUtils.isEmpty(bankAccount) || TextUtils.isEmpty(bankName)
-                        || TextUtils.isEmpty(zhi) || TextUtils.isEmpty(city)) {
-                    showToast("請填寫完整信息!");
-                    return;
-                }
+//                if (TextUtils.isEmpty(bankType) || TextUtils.isEmpty(bankAccount) || TextUtils.isEmpty(bankName)
+//                        ) {
+//                    showToast("請填寫完整信息!");
+//                    return;
+//                }
 
                 TipsDialog tipsDialog = new TipsDialog(mContext);
                 tipsDialog.setLeftButt("確定");

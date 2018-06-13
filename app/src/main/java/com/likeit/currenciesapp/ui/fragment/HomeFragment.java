@@ -2,6 +2,7 @@ package com.likeit.currenciesapp.ui.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +42,7 @@ import com.likeit.currenciesapp.model.HomeInfoEntity;
 import com.likeit.currenciesapp.model.LoginUserInfoEntity;
 import com.likeit.currenciesapp.model.RateInfoEntity;
 import com.likeit.currenciesapp.model.UserInfo;
+import com.likeit.currenciesapp.ui.Greenteahy.DianBuyInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.DianSellInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.IncomeExpendActivity;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
@@ -678,12 +680,17 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                     showToast("您沒有權限操作，請聯系管理員！");
                     return;
                 } else {
+//                    bundle = new Bundle();
+//                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+//                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
+//                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+//                    bundle.putString(HomeFragment.COIN_ID, "2");
+//                    toActivity(DianBuyInputRateActivity.class, bundle);
+
                     bundle = new Bundle();
-                    bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                    bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
-                    bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                    bundle.putString(HomeFragment.COIN_ID, "2");
-                    toActivity(BuyInActivity.class, bundle);
+                    bundle.putSerializable("Dian", mDianInfoEntity);
+                    toActivity(DianBuyInputRateActivity.class, bundle);
+
                 }
                 break;
             /**

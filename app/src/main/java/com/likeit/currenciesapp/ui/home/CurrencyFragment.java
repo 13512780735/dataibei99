@@ -27,6 +27,7 @@ import com.likeit.currenciesapp.configs.CoinTypes;
 import com.likeit.currenciesapp.configs.OperateTypes;
 import com.likeit.currenciesapp.model.DianInfoEntity;
 import com.likeit.currenciesapp.model.RateInfoEntity;
+import com.likeit.currenciesapp.ui.Greenteahy.DianBuyInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.DianSellInputRateActivity;
 import com.likeit.currenciesapp.ui.fragment.HomeFragment;
 import com.likeit.currenciesapp.utils.HttpUtil;
@@ -262,14 +263,20 @@ public class CurrencyFragment extends DialogFragment implements View.OnClickList
                     ToastUtil.showL(getActivity(),"您沒有權限操作，請聯系管理員！");
                     return;
                 }else{
-                intent = new Intent(getActivity(), BuyInActivity.class);
-                bundle = new Bundle();
-                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
-                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
-                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
-                bundle.putString(HomeFragment.COIN_ID, "2");
-                intent.putExtras(bundle);
-                startActivity(intent);}
+//                intent = new Intent(getActivity(), BuyInActivity.class);
+//                bundle = new Bundle();
+//                bundle.putSerializable(HomeFragment.COIN_TYPE, coin_type);
+//                bundle.putSerializable(HomeFragment.OPERATE_TYPE, OperateTypes.BUY);
+//                bundle.putSerializable(HomeFragment.RATE_INFO, mRateInfoEntity);
+//                bundle.putString(HomeFragment.COIN_ID, "2");
+//                intent.putExtras(bundle);
+//                startActivity(intent);
+                    intent = new Intent(getActivity(), DianBuyInputRateActivity.class);
+                    bundle = new Bundle();
+                    bundle.putSerializable("Dian", mDianInfoEntity);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
                 break;
             case R.id.tv_alipay://充值
             //asdasdasd
