@@ -100,6 +100,7 @@ public class OrderViewHolder extends BaseViewHolder<OrderInfoEntity> {
             noticeHuiTv.setText("通 知 匯 款");
             noticeHuiTv.setBackgroundResource(R.drawable.shape_round_order_item_butt);
             noticeHuiTv.setEnabled(true);
+
         }
 
         alipayGive = orderInfoEntity.getZs_money();
@@ -129,8 +130,63 @@ public class OrderViewHolder extends BaseViewHolder<OrderInfoEntity> {
         } else {
             delTv.setVisibility(View.VISIBLE);
         }
+        noticeHuiTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("TAG", "點擊了");
+                OrderNoticDialog noticDialog = new OrderNoticDialog(context);
+                noticDialog.setOnClickListener(new OrderNoticDialog.OnClickListener() {
+                    @Override
+                    public void onRightClick(String name, String bank, String num) {
+                        Log.d("TAG", "huming-->" + name + "bankname-->" + bank + "bankcode5-->" + num + "id-->" + (String) v.getTag(R.id.kk_order_id));
+                        String url = AppConfig.LIKEIT_DO_HUIKUAN;
+                        RequestParams params = new RequestParams();
+                        params.put("ukey", UtilPreference.getStringValue(context, "ukey"));
+                        params.put("huming", name);
+                        params.put("bankname", bank);
+                        params.put("bankcode5", num);
+                        params.put("id", (String) v.getTag(R.id.kk_order_id));
+                        HttpUtil.post(url, params, new HttpUtil.RequestListener() {
+                            @Override
+                            public void success(String response) {
+                                Log.e("TAG555", response);
+                                try {
+                                    JSONObject obj = new JSONObject(response);
+                                    String status = obj.optString("status");
+                                    String code = obj.optString("code");
+                                    String msg = obj.optString("msg");
+                                    if ("true".equals(status)) {
+                                        showToast("发送汇款通知成功");
+                                        //  RxBus.get().post(new RefreshEvent(RefreshEvent.GET_ORDER_LIST));
+                                        baseActivity.page = 1;
+                                        baseActivity.refreshItems();
+                                    } else {
+                                        showToast(msg);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
 
-        delTv.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void failed(Throwable e) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onLeftClick() {
+
+                    }
+                });
+
+                noticDialog.show();
+            }
+        });
+        delTv.setOnClickListener(new View.OnClickListener()
+
+        {
             @Override
             public void onClick(final View v) {
                 TipsDialog tipsDialog = new TipsDialog(context);
@@ -266,7 +322,7 @@ public class OrderViewHolder extends BaseViewHolder<OrderInfoEntity> {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.notice_hui_tv:
-                noticeHui((String) noticeHuiTv.getTag(R.id.kk_order_id));
+                //noticeHui((String) noticeHuiTv.getTag(R.id.kk_order_id));
                 break;
             case R.id.modify_tv:
                 modifyOrder((String) noticeHuiTv.getTag(R.id.kk_order_id));
@@ -373,8 +429,6 @@ public class OrderViewHolder extends BaseViewHolder<OrderInfoEntity> {
     private void noticeHui(final String orderId) {
 //
         OrderNoticDialog noticDialog = new OrderNoticDialog(context);
-
-
         noticDialog.setOnClickListener(new OrderNoticDialog.OnClickListener() {
             @Override
             public void onRightClick(String name, String bank, String num) {
@@ -384,10 +438,11 @@ public class OrderViewHolder extends BaseViewHolder<OrderInfoEntity> {
                 params.put("huming", name);
                 params.put("bankname", bank);
                 params.put("bankcode5", num);
-                params.put("id", orderId);
+                params.put("id", orderDetailInfoEntity.getId());
                 HttpUtil.post(url, params, new HttpUtil.RequestListener() {
                     @Override
                     public void success(String response) {
+                        Log.e("TAG555", response);
                         try {
                             JSONObject obj = new JSONObject(response);
                             String status = obj.optString("status");

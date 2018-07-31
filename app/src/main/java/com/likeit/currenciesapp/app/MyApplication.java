@@ -87,10 +87,12 @@ public class MyApplication extends MultiDexApplication {
         mHandler = new Handler();
         // 初始化融云
 //        //初始化
-       Beta.autoCheckUpgrade = true;//设置自动检查
-        Bugly.init(mContext, "5744a5eb46", false);
-        //initIM();
-         initUpdate();//腾讯bugly更新
+        /**
+         * Bugly更新
+         */
+//        Beta.autoCheckUpgrade = true;//设置自动检查
+//        Bugly.init(mContext, "5744a5eb46", false);
+//        initUpdate();//腾讯bugly更新
         Stetho.initialize(new Stetho.Initializer(this) {
             @Override
             protected Iterable<DumperPlugin> getDumperPlugins() {
@@ -170,55 +172,6 @@ public class MyApplication extends MultiDexApplication {
                     .cacheInMemory(true)
                     .cacheOnDisk(true)
                     .build();
-
-//            RongExtensionManager.getInstance().registerExtensionModule(new PTTExtensionModule(this, true, 1000 * 60));
-//            RongExtensionManager.getInstance().registerExtensionModule(new ContactCardExtensionModule(new IContactCardInfoProvider() {
-//                @Override
-//                public void getContactAllInfoProvider(final IContactCardInfoCallback contactInfoCallback) {
-//                    SealUserInfoManager.getInstance().getFriends(new SealUserInfoManager.ResultCallback<List<Friend>>() {
-//                        @Override
-//                        public void onSuccess(List<Friend> friendList) {
-//                            contactInfoCallback.getContactCardInfoCallback(friendList);
-//                        }
-//
-//                        @Override
-//                        public void onError(String errString) {
-//                            contactInfoCallback.getContactCardInfoCallback(null);
-//                        }
-//                    });
-//                }
-//
-//                @Override
-//                public void getContactAppointedInfoProvider(String userId, String name, String portrait, final IContactCardInfoCallback contactInfoCallback) {
-//                    SealUserInfoManager.getInstance().getFriendByID(userId, new SealUserInfoManager.ResultCallback<Friend>() {
-//                        @Override
-//                        public void onSuccess(Friend friend) {
-//                            List<UserInfo> list = new ArrayList<>();
-//                            list.add(friend);
-//                            contactInfoCallback.getContactCardInfoCallback(list);
-//                        }
-//
-//                        @Override
-//                        public void onError(String errString) {
-//                            contactInfoCallback.getContactCardInfoCallback(null);
-//                        }
-//                    });
-//                }
-//
-//            }, new IContactCardClickListener() {
-//                @Override
-//                public void onContactCardClick(View view, ContactMessage content) {
-//                    Intent intent = new Intent(view.getContext(), UserDetailActivity.class);
-//                    Friend friend = SealUserInfoManager.getInstance().getFriendByID(content.getId());
-//                    if (friend == null) {
-//                        UserInfo userInfo = new UserInfo(content.getId(), content.getName(),
-//                                Uri.parse(TextUtils.isEmpty(content.getImgUrl()) ? RongGenerate.generateDefaultAvatar(content.getName(), content.getId()) : content.getImgUrl()));
-//                        friend = CharacterParser.getInstance().generateFriendFromUserInfo(userInfo);
-//                    }
-//                    intent.putExtra("friend", friend);
-//                    view.getContext().startActivity(intent);
-//                }
-//            }));
             RongExtensionManager.getInstance().registerExtensionModule(new RecognizeExtensionModule());
         }
     }
@@ -270,13 +223,13 @@ public class MyApplication extends MultiDexApplication {
     }
 
 
-    private void initUpdate() {
-        Bugly.init(getApplicationContext(), "5744a5eb46", false);
-        Beta.autoCheckUpgrade = true;
-        Beta.upgradeCheckPeriod = 60 * 60 * 1000;
-        Beta.largeIconId = R.mipmap.ic_launcher;
-
-    }
+//    private void initUpdate() {
+//        Bugly.init(getApplicationContext(), "5744a5eb46", false);
+//        Beta.autoCheckUpgrade = true;
+//        Beta.upgradeCheckPeriod = 60 * 60 * 1000;
+//        Beta.largeIconId = R.mipmap.ic_launcher;
+//
+//    }
 
     /**
      * 根据Pid获取当前进程的名字，一般就是当前app的包名

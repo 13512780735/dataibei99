@@ -39,7 +39,7 @@ public class OrderNoticDialog extends Dialog {
 
     public OrderNoticDialog(@NonNull Context context) {
         super(context, R.style.dialogStyle);
-        this.context=context;
+        this.context = context;
         setContentView(R.layout.dialog_order_notic);
         setCancelable(false);
         ButterKnife.bind(this);
@@ -56,12 +56,12 @@ public class OrderNoticDialog extends Dialog {
                 String name = noticeHuiNameEt.getText().toString().trim();
                 String bank = noticeHuiBankEt.getText().toString().trim();
                 String other = noticeHuiOtherEt.getText().toString().trim();
-                if (TextUtils.isEmpty(name)) {
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(bank) || TextUtils.isEmpty(other)) {
                     Toast.makeText(context, "請輸入完整信息", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 dismiss();
-                onClickListener.onRightClick(name,bank,other);
+                onClickListener.onRightClick(name, bank, other);
                 break;
         }
     }

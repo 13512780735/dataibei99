@@ -105,8 +105,8 @@
                 android:background="@drawable/home_button_red"
                 android:gravity="center_vertical"
                 android:paddingBottom="8dip"
-                android:paddingLeft="30dip"
-                android:paddingRight="30dip"
+                android:paddingLeft="22dip"
+                android:paddingRight="22dip"
                 android:paddingTop="8dip"
                 android:text="@string/home_name06"
                 android:textColor="@color/white" />
