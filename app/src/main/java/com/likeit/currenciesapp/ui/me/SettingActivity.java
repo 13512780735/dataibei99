@@ -73,7 +73,8 @@ public class SettingActivity extends Container {
             case R.id.tv_rlchange_pwd:
                 toActivity(ModifyPasswdActivity.class);
                 break;
-            case R.id.tv_rlupdate_version:
+            case R.id.tv_rlupdate_version:  //showToast("待开发");
+
                 Beta.checkUpgrade();
                 break;
         }

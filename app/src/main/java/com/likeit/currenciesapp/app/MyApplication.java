@@ -90,9 +90,9 @@ public class MyApplication extends MultiDexApplication {
         /**
          * Bugly更新
          */
-//        Beta.autoCheckUpgrade = true;//设置自动检查
-//        Bugly.init(mContext, "5744a5eb46", false);
-//        initUpdate();//腾讯bugly更新
+        Beta.autoCheckUpgrade = true;//设置自动检查
+        Bugly.init(mContext, "5744a5eb46", false);
+        initUpdate();//腾讯bugly更新
         Stetho.initialize(new Stetho.Initializer(this) {
             @Override
             protected Iterable<DumperPlugin> getDumperPlugins() {
@@ -223,13 +223,13 @@ public class MyApplication extends MultiDexApplication {
     }
 
 
-//    private void initUpdate() {
-//        Bugly.init(getApplicationContext(), "5744a5eb46", false);
-//        Beta.autoCheckUpgrade = true;
-//        Beta.upgradeCheckPeriod = 60 * 60 * 1000;
-//        Beta.largeIconId = R.mipmap.ic_launcher;
-//
-//    }
+    private void initUpdate() {
+        Bugly.init(getApplicationContext(), "5744a5eb46", false);
+        Beta.autoCheckUpgrade = true;
+        Beta.upgradeCheckPeriod = 60 * 60 * 1000;
+        Beta.largeIconId = R.mipmap.ic_launcher;
+
+    }
 
     /**
      * 根据Pid获取当前进程的名字，一般就是当前app的包名
