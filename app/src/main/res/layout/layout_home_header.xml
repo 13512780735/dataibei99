@@ -282,11 +282,12 @@
                     android:layout_weight="4"
                     android:background="@drawable/home_button_red"
                     android:gravity="center"
-                    android:paddingBottom="4dip"
-                    android:paddingLeft="10dip"
-                    android:paddingRight="10dip"
-                    android:paddingTop="4dip"
+                    android:paddingBottom="8dip"
+                    android:paddingLeft="3dip"
+                    android:paddingRight="3dip"
+                    android:paddingTop="8dip"
                     android:text="@string/home_name06"
+                    android:textSize="11sp"
                     android:textColor="@color/white" />
 
                 <TextView
@@ -296,7 +297,7 @@
                     android:layout_weight="3"
                     android:gravity="center"
                     android:text="4.595"
-                    android:textSize="11sp" />
+                    android:textSize="@dimen/text_size_normal" />
 
             </LinearLayout>
 

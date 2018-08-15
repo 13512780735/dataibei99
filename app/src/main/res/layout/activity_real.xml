@@ -19,6 +19,7 @@
         android:background="@color/white">
 
         <LinearLayout
+            android:id="@+id/apply_linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -356,4 +357,13 @@
                 android:textColor="@color/white" />
         </LinearLayout>
     </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+    <TextView
+        android:id="@+id/isshow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:textSize="18sp"
+        android:text="XXX" />
 </LinearLayout>

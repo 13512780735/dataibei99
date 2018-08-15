@@ -91,6 +91,10 @@ public class AppConfig {
      */
     public static final String LIKEIT_UP_USER_REAL = IMAGE_URL_HOST + "?m=user&a=up_user_real";
     /**
+     *查看认证资料 & 状态
+     */
+    public static final String LIKEIT_check_real_status = IMAGE_URL_HOST + "?m=user&a=check_real_status";
+    /**
      * 上传身份证照片
      */
     public static final String LIKEIT_UP_HANDHELD_IDCARD_BASE64 = IMAGE_URL_HOST + "?m=user&a=up_real_pic_base64";

@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.likeit.currenciesapp.R;
 import com.likeit.currenciesapp.api.AppConfig;
 import com.likeit.currenciesapp.ui.base.Container;
@@ -69,7 +70,10 @@ public class RealActivity extends Container {
     EditText apply_et_code;
     @BindView(R.id.send_code_btn)
     TextView tvCode;
-
+    @BindView(R.id.apply_scrollView)
+    PullToRefreshScrollView apply_scrollView;
+    @BindView(R.id.isshow)
+    TextView isshow;
 
     private PopupWindow mPopupWindow;
     private View mpopview;
@@ -107,13 +111,57 @@ public class RealActivity extends Container {
     private Bitmap bitmap1;
     private Bitmap bitmap2;
     private Bitmap bitmap3;
-
+    private JSONObject obj;
+    private String real_status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real);
         ButterKnife.bind(this);
+       // apply_scrollView.setVisibility(View.VISIBLE);
         initView();
+      initData();
+    }
+
+    private void initData() {
+        String url = AppConfig.LIKEIT_check_real_status;
+        RequestParams params = new RequestParams();
+        params.put("ukey", ukey);
+        HttpUtil.post(url, params, new HttpUtil.RequestListener() {
+            @Override
+            public void success(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    String code = object.optString("code");
+                    // String message=object.optString("msg");
+                    String status = object.optString("status");
+                    String message = object.optString("msg");
+                    if ("true".equals(status)) {
+                        obj = object.optJSONObject("info");
+                        real_status=obj.optString("real_status");
+                        if("0".equals(real_status)){
+                            apply_scrollView.setVisibility(View.GONE);
+                            isshow.setVisibility(View.VISIBLE);
+                            isshow.setText("實名認證待審核");
+                        }else if("1".equals(real_status)){
+                            isshow.setVisibility(View.VISIBLE);
+                            isshow.setText("實名認證審核通過");
+                        }else{
+                            apply_scrollView.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        showToast(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void failed(Throwable e) {
+
+            }
+        });
     }
 
     private void initView() {
@@ -370,8 +418,8 @@ public class RealActivity extends Container {
         }
     }
 
-    private static final int output_X = 480;
-    private static final int output_Y = 480;
+    private static final int output_X = 720;
+    private static final int output_Y = 1280;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
