@@ -418,8 +418,8 @@ public class RealActivity extends Container {
         }
     }
 
-    private static final int output_X = 800;
-    private static final int output_Y = 800;
+    private static final int output_X = 1200;
+    private static final int output_Y = 1200;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
