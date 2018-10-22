@@ -164,6 +164,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private LinearLayout ll_income, ll_expend;
     private RelativeLayout rl_income, rl_expend;
     private TextView tv_income, tv_income01, tv_income02, tv_income03, tv_expend, tv_expend01, tv_expend02, tv_expend03;
+    CircleImageView iv_avatar, iv_avatar01;
     private List<HomeInfoEntity.AdsBean> imgId;
     //    private SliderLayout sliderLayout;
 //    private DefaultSliderView textSliderView;
@@ -230,8 +231,20 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                             dataList01.add(greenteahyInfoEntity);
 
                         }
+                        if ("1".equals(dataList01.get(0).getType()) || "7".equals(dataList01.get(0).getType())) {
+                            io.rong.imageloader.core.ImageLoader.getInstance().displayImage(dataList01.get(0).getOther_user().getPic(), iv_avatar01);
+                        } else {
+                            iv_avatar.setImageResource(R.mipmap.ic_launcher);
+                        }
+                        if ("1".equals(dataList01.get(0).getType())) {
+                            tv_expend02.setText(dataList01.get(0).getType_name() + "給-"+"“" + dataList01.get(0).getOther_user().getTruename()+"”");
+                        } else if ("7".equals(dataList01.get(0).getType())) {
+                            tv_expend02.setText(dataList01.get(0).getType_name() + "-" +"“" + dataList01.get(0).getOther_user().getTruename()+"”");
+                        } else {
+                            tv_expend02.setText(dataList01.get(0).getType_name());
+                        }
                         tv_expend01.setText(dataList01.get(0).getDian());
-                        tv_expend02.setText(dataList01.get(0).getType_name());
+
                         tv_expend03.setText(dataList01.get(0).getAddtime());
                     } else {
                         rl_expend.setVisibility(View.GONE);
@@ -277,8 +290,17 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                             dataList.add(greenteahyInfoEntity);
 
                         }
+                        if ("2".equals(dataList.get(0).getType()) || "8".equals(dataList.get(0).getType())) {
+                            io.rong.imageloader.core.ImageLoader.getInstance().displayImage(dataList.get(0).getOther_user().getPic(), iv_avatar);
+                        } else {
+                            iv_avatar.setImageResource(R.mipmap.ic_launcher);
+                        }
+                        if ("2".equals(dataList.get(0).getType()) || "8".equals(dataList.get(0).getType())) {
+                            tv_income02.setText(dataList.get(0).getType_name() + "-來自" +"“"  + dataList.get(0).getOther_user().getTruename()+"”");
+                        } else {
+                            tv_income02.setText(dataList.get(0).getType_name());
+                        }
                         tv_income01.setText(dataList.get(0).getDian());
-                        tv_income02.setText(dataList.get(0).getType_name());
                         tv_income03.setText(dataList.get(0).getAddtime());
 
                     } else {
@@ -402,7 +424,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                         //人民币
                         for (int i = 0; i < mHomeInfoEntity.getBarray().size(); i++) {
                             name = mHomeInfoEntity.getBarray().get(i).getName();
-                          //  Log.d("TAG333", name + "");
+                            //  Log.d("TAG333", name + "");
                             if ("人民币".equals(name)) {
                                 is_kaipan = mHomeInfoEntity.getBarray().get(i).isIs_kaipan();
 //                                Log.d("TAG", is_kaipan + "");
@@ -424,7 +446,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
                                 }
                             }
                         }
-                      //  Log.d("TAG", mHomeInfoEntity.toString());
+                        //  Log.d("TAG", mHomeInfoEntity.toString());
                     } else {
                         ToastUtil.showS(getActivity(), msg);
                     }
@@ -503,7 +525,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
             adsModel.setImg(AppConfig.LIKEIT_LOGO1 + mHomeInfoEntity.getAds().get(i).getImg());
             AdList.add(adsModel);
         }
-      //  Log.e("TAG1212", AdList.get(0).toString());
+        //  Log.e("TAG1212", AdList.get(0).toString());
         //  networkImage=AdList;
         mBanner.startTurning(3000);
         mBanner.setPages(new CBViewHolderCreator<NetWorkImageHolderView>() {
@@ -565,11 +587,13 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         ll_expend = findViewById(R.id.ll_expend);//支出更多记录
         rl_income = findViewById(R.id.rl_income);//最新收入记录
         tv_income = findViewById(R.id.tv_income);//收入无数据
+        iv_avatar = findViewById(R.id.iv_avatar);//收入图像
         tv_income01 = findViewById(R.id.tv_income01);//收入无数据
         tv_income02 = findViewById(R.id.tv_income02);//收入无数据
         tv_income03 = findViewById(R.id.tv_income03);//收入无数据
         rl_expend = findViewById(R.id.rl_expend);//最新支出记录
         tv_expend = findViewById(R.id.tv_expend);//支出無數據
+        iv_avatar01 = findViewById(R.id.iv_avatar01);//收入图像
         tv_expend01 = findViewById(R.id.tv_expend01);//支出無數據
         tv_expend02 = findViewById(R.id.tv_expend02);//支出無數據
         tv_expend03 = findViewById(R.id.tv_expend03);//支出無數據

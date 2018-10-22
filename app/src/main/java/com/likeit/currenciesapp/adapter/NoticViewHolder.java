@@ -35,7 +35,7 @@ public class NoticViewHolder extends BaseViewHolder<NoticeInfoEntity> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, WebActivity.class);
                 intent.putExtra(WebActivity.WEB_TITLE, noticeInfoEntity.getCntitle());
-                intent.putExtra(WebActivity.WEB_URL, AppConfig.LIKEIT_LOGO1 + "?&m=index&a=notice_detail&id=" + noticeInfoEntity.getId());
+                intent.putExtra(WebActivity.WEB_URL, AppConfig.IMAGE_URL_HOST + "?&m=index&a=notice_detail&id=" + noticeInfoEntity.getId());
                 context.startActivity(intent);
             }
         });

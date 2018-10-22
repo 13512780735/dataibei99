@@ -106,6 +106,12 @@ public class NoticeListActivity extends BaseActivity {
             public void failed(Throwable e) {
 
             }
+
+            @Override
+            public void onFinish() {
+                super.onFinish();
+                onRefreshComplete();
+            }
         });
 //        HttpMethods.getInstance().getNoticList(new MySubscriber<ArrayList<NoticeInfoEntity>>(this) {
 //            @Override
