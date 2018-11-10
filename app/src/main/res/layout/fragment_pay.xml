@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:descendantFocusability="afterDescendants"
 
-    tools:context="com.likeit.currenciesapp.ui.Greenteahy.TransferDialog02Fragment">
+    tools:context="com.likeit.currenciesapp.ui.home.PayFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

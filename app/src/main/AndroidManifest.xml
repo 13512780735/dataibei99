@@ -55,9 +55,11 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
     <permission android:name="android.permission.DEVICE_POWER" />
+
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
+
     <permission android:name="android.permission.WRITE_APN_SETTINGS" />
 
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
@@ -77,30 +79,32 @@
     <uses-permission android:name="com.likeit.currenciesapp.permission.MIPUSH_RECEIVE" />
     <!-- ⼩米 配置结束 < -->
     <!-- 华为 配置开始 < -->
-    <!--HMS-SDK引导升级HMS功能，访问OTA服务器需要网络权限-->
+    <!-- HMS-SDK引导升级HMS功能，访问OTA服务器需要网络权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限-->
+    <!-- HMS-SDK引导升级HMS功能，保存下载的升级包需要SD卡写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!--检测网络状态-->
+    <!-- 检测网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--检测wifi状态-->
+    <!-- 检测wifi状态 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--为了获取用户手机的IMEI，用来唯一的标识用户。-->
+    <!-- 为了获取用户手机的IMEI，用来唯一的标识用户。 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <!--如果是安卓8.0，应用编译配置的targetSdkVersion>=26，请务必添加以下权限 -->
+    <!-- 如果是安卓8.0，应用编译配置的targetSdkVersion>=26，请务必添加以下权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!-- 华为 配置结束 < -->
 
+
     <!-- MeiZu 配置开始 < -->
-    <!-- 兼容 flyme5.0 以下版本，魅族内部集成 pushSDK 必填，不然无法收到 消息-->
-    <uses-permission
-        android:name="com.meizu.flyme.push.permission.RECEIVE"/>
+    <!-- 兼容 flyme5.0 以下版本，魅族内部集成 pushSDK 必填，不然无法收到 消息 -->
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE" />
+
     <permission
         android:name="com.likeit.currenciesapp.push.permission.MESSAGE"
-        android:protectionLevel="signature"/>
-    <uses-permission android:name="com.likeit.currenciesapp.push.permission.MESSAGE"/>
-    <!-- 兼容 flyme3.0 配置权限-->
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.likeit.currenciesapp.push.permission.MESSAGE" />
+    <!-- 兼容 flyme3.0 配置权限 -->
     <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
     <!-- MeiZu 配置结束 < -->
     <!-- GCM 配置开始 < -->
@@ -128,26 +132,25 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-
-
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.SplashActivity"
+        <activity
+            android:name=".ui.login.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:keepScreenOn="true"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            >
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
+
             <data
                 android:host="com.likeit.currenciesapp"
                 android:pathPrefix="/push_message"
@@ -167,7 +170,6 @@
         <activity android:name=".ui.me.BankcardActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.login.ForgetPwdActivity" />
-
         <activity android:name=".ui.login.WebTermsServiceActivity" />
         <activity android:name=".ui.home.NoticeListActivity" />
         <activity android:name=".ui.home.SellResultActivity" />
@@ -514,7 +516,10 @@
         <activity android:name=".ui.chat.redMessage.GroupRedListActivity" />
         <activity android:name=".ui.chat.transferMessage.TransferActivity" />
         <activity android:name=".ui.me.AddTaiwanBankActivity" />
-        <activity android:name=".ui.Greenteahy.DianSellResult01Activity"></activity>
+        <activity android:name=".ui.Greenteahy.DianSellResult01Activity" />
+        <activity android:name=".ui.home.MoneyQRCode01Activity" />
+        <activity android:name=".ui.home.Scan01Activity" />
+        <activity android:name=".ui.home.PayMentActivity"></activity>
     </application>
 
 </manifest>

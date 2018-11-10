@@ -29,6 +29,7 @@ public class AppConfig {
     public static final String LIKEIT_USER_EDIT = IMAGE_URL_HOST + "?m=user&a=edit";
     //获取融云用户信息
     public static final String LIKEIT_GET_RONGCLOUDID = IMAGE_URL_HOST + "?m=user&a=get_info_by_rongcloudid";
+    public static final String LIKEIT_GET_user_info = IMAGE_URL_HOST + "?m=user&a=get_userinfo";
     //客服搜索用户接口
     public static final String LIKEIT_GET_SEARCH_USER = IMAGE_URL_HOST + "?m=user&a=search_user";
     //客服列表

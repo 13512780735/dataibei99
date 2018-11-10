@@ -2,15 +2,12 @@ package com.likeit.currenciesapp.ui.fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -24,9 +21,6 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import com.likeit.currenciesapp.R;
@@ -43,13 +37,11 @@ import com.likeit.currenciesapp.model.LoginUserInfoEntity;
 import com.likeit.currenciesapp.model.RateInfoEntity;
 import com.likeit.currenciesapp.model.UserInfo;
 import com.likeit.currenciesapp.ui.Greenteahy.DianBuyInputRateActivity;
-import com.likeit.currenciesapp.ui.Greenteahy.DianSellInputRateActivity;
 import com.likeit.currenciesapp.ui.Greenteahy.IncomeExpendActivity;
 import com.likeit.currenciesapp.ui.base.BaseFragment;
 import com.likeit.currenciesapp.ui.chat.server.widget.LoadDialog;
-import com.likeit.currenciesapp.ui.home.AlipayActivity;
-import com.likeit.currenciesapp.ui.home.BuyInActivity;
 import com.likeit.currenciesapp.ui.home.ExchangeRateActivity;
+import com.likeit.currenciesapp.ui.home.MoneyQRCode01Activity;
 import com.likeit.currenciesapp.ui.home.NegotiationActivity;
 import com.likeit.currenciesapp.ui.home.NoticeListActivity;
 import com.likeit.currenciesapp.ui.home.PreOrderActivity;
@@ -57,13 +49,14 @@ import com.likeit.currenciesapp.ui.home.RechargeFragment;
 import com.likeit.currenciesapp.ui.home.SellActivity;
 import com.likeit.currenciesapp.ui.home.WithdrawDialogFragment;
 import com.likeit.currenciesapp.ui.me.OrderListActivity;
+import com.likeit.currenciesapp.ui.me.QRCodeCardActivity;
 import com.likeit.currenciesapp.utils.HttpUtil;
 import com.likeit.currenciesapp.utils.ToastUtil;
 import com.likeit.currenciesapp.utils.UtilPreference;
 import com.likeit.currenciesapp.views.CircleImageView;
 import com.likeit.currenciesapp.views.NoScrollViewPager;
 import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.xiong.DragView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -171,6 +164,8 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     private String work;
     private ConvenientBanner mBanner;
     private ImageView image_lv;
+    private DragView mDrag;
+    private LoginUserInfoEntity mLoginUserInfoEntity;
 
 
     @Override
@@ -196,7 +191,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         initIncome();
         initExpend();
         String ukey = UtilPreference.getStringValue(getActivity(), "ukey");
-        LoginUserInfoEntity mLoginUserInfoEntity = (LoginUserInfoEntity) getActivity().getIntent().getSerializableExtra("userInfo");
+       mLoginUserInfoEntity = (LoginUserInfoEntity) getActivity().getIntent().getSerializableExtra("userInfo");
 //        Log.d("TAG", "ukey-->" + ukey);
 //        Log.d("TAG", "mLoginUserInfoEntity-->" + mLoginUserInfoEntity);
         mHandler.post(runnable);
@@ -568,6 +563,7 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
     TextView tv_name, tv_dianshu;
 
     private void initView() {
+        mDrag = findViewById(R.id.drag);//悬浮按钮
         tv_nian = findViewById(R.id.tv_nianlv);
         ivLeft = findViewById(R.id.iv_header_left);
         ivRight = findViewById(R.id.tv_header_right);
@@ -648,6 +644,17 @@ public class HomeFragment extends BaseFragment implements PullToRefreshBase.OnRe
         rl_my_greentadhy01.setOnClickListener(this);
         ll_income.setOnClickListener(this);
         ll_expend.setOnClickListener(this);
+        mDrag.onClickListener(new DragView.OnClickListener() {
+            @Override
+            public void onClick() {
+                //Toast.makeText(getActivity(), "Touch", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("userInfo", mLoginUserInfoEntity);
+                bundle.putSerializable("Dian", mDianInfoEntity);
+                toActivity(MoneyQRCode01Activity.class, bundle);
+                
+            }
+        });
     }
 
     @Override

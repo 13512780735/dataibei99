@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.home.Scan01Activity">
+
+    <include layout="@layout/layout_header_with_back"></include>
+
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/zxingview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:qrcv_animTime="1000"
+        app:qrcv_barCodeTipText="将条码放入框内，即可自动扫描"
+        app:qrcv_barcodeRectHeight="140dp"
+        app:qrcv_borderColor="@android:color/white"
+        app:qrcv_borderSize="1px"
+        app:qrcv_cornerColor="#45C01A"
+        app:qrcv_cornerLength="20dp"
+        app:qrcv_cornerSize="3dp"
+        app:qrcv_isBarcode="false"
+        app:qrcv_isCenterVertical="false"
+        app:qrcv_isOnlyDecodeScanBoxArea="false"
+        app:qrcv_isScanLineReverse="true"
+        app:qrcv_isShowDefaultGridScanLineDrawable="false"
+        app:qrcv_isShowDefaultScanLineDrawable="true"
+        app:qrcv_isShowTipBackground="true"
+        app:qrcv_isShowTipTextAsSingleLine="false"
+        app:qrcv_isTipTextBelowRect="true"
+        app:qrcv_maskColor="#33FFFFFF"
+        app:qrcv_qrCodeTipText="將二維碼放入框內，即可自動掃描"
+        app:qrcv_rectWidth="200dp"
+        app:qrcv_scanLineColor="#45C01A"
+        app:qrcv_scanLineMargin="0dp"
+        app:qrcv_scanLineSize="1dp"
+        app:qrcv_tipTextColor="@android:color/white"
+        app:qrcv_tipTextSize="12sp"
+        app:qrcv_toolbarHeight="112px"
+        app:qrcv_topOffset="90dp" />
+</LinearLayout>
+

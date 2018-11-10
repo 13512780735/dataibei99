@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.likeit.currenciesapp.ui.home.MoneyQRCode01Activity">
+
+    <include layout="@layout/layout_header_with_back" />
+
+    <include layout="@layout/include_money_qrcode_card" />
+
+    <TextView
+        android:id="@+id/go_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/defulat_button_height"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="@dimen/width40"
+        android:background="@drawable/shape_round_rate_submit_butt"
+        android:gravity="center"
+        android:text="掃一掃付款"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+</LinearLayout>
+

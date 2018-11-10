@@ -29,6 +29,8 @@ import com.likeit.currenciesapp.utils.UtilPreference;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import butterknife.ButterKnife;
+
 
 @SuppressLint("HandlerLeak")
 public class Container extends AppCompatActivity {
@@ -57,6 +59,7 @@ public class Container extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         MyActivityManager.getInstance().addActivity(this);
         mContext = this;
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //setMiuiStatusBarDarkMode(this, true);
 //        Window window = this.getWindow();
